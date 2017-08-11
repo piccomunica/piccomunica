@@ -1,0 +1,44 @@
+{
+  "name": "PicComunica",
+  "version": "0.0.1",
+  "description": "APP, sin ánimo de lucro, para ayudar a las personas que presentan problemas de comunicación.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piccomunica/piccomunica.git"
+  },
+  "author": "PicComunica Hack4Good Canarias 2017",
+  "contributors": [
+    "Raúl Cabrera <rauliscoding@gmail.com> (https://www.linkedin.com/in/raulcabreramedina)",
+    "Bryan Gil <nuanda340@gmail.com>",
+    "Mayte Cabrera <mytcbr@gmail.com> (https://www.linkedin.com/in/maría-teresa-cabrera-díaz-b2013277)",
+    "Hector Robaina <hrobainac@gmail.com>",
+    "Kevin Vera <kevinmolamazo@gmail.com>"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "asd",
+    "tea",
+    "autism",
+    "autismo",
+    "ecosystem:phonegap",
+    "ecosystem:cordova"
+  ],
+  "bugs": {
+    "url": "https://github.com/piccomunica/piccomunica/issues",
+    "email": "piccomunica@gmail.com"
+  },
+  "homepage": "http://piccomunica.esy.es/",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-nodeunit": "latest",
+    "grunt-contrib-uglify": "latest"
+  },
+  "dependencies": {
+    "sass": "latest",
+    "grunt-sass": "latest",
+    "watch": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-exec": "latest"
+  }
+}

@@ -1,0 +1,20 @@
+<link rel="import" href="../../js/libs/polymer/polymer.html">
+<link rel="import" href="pic-header-style.html">
+
+<dom-module id="pic-header">
+  <template>
+    <style include="pic-header-style"></style>
+    <style></style>
+
+    <header class="green_gradient">
+      <div id="menu">
+        <content></content>
+      </div>
+      <!-- Quitar el borde, una vez puesta la imagen -->
+      <div id="logo">
+        <p>{{logo}}</p>
+      </div>
+    </header>
+  </template>
+  <script src="pic-header.js"></script>
+</dom-module>
