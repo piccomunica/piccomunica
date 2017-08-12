@@ -91,7 +91,7 @@ $JSView = {
         objElement.classList.add('JSVcontainerForeground');
         //Read the template
         $JSVRequest.do(e,JSVDeclareViews[e].template,true);
-        window.history.pushState(e, "Titulo", '/www/index.html#' + e);
+        window.history.pushState(e, "Titulo", '');
     },
     dataView: function(obj, e) {
 
@@ -151,7 +151,7 @@ $JSView = {
             //Execute the function controller of this view
             $JSView.controller[e](e);
             //Change the url
-            window.history.pushState(e, '', '/www/index.html#' + e);
+            window.history.pushState(e, '', '');
         }
         /*-----------*/
 
@@ -210,7 +210,7 @@ $JSView = {
                 //Execute the function controller of this view
                 $JSView.controller[e](e);
                 //Change the url
-                window.history.pushState(e, '', '/www/index.html#' + e);
+                window.history.pushState(e, '', '');
             }
             /*-----------*/
         }
@@ -261,7 +261,7 @@ $JSView = {
         $JSView.controller[e](e);
         /*-----------*/
         //Change the url
-        window.history.pushState(e, '', '/www/index.html#'+e);
+        window.history.pushState(e, '', '');
     },
     closeModal: function(e){
         //Keep dom element in a variable
