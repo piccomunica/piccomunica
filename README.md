@@ -6,7 +6,7 @@ hybrid_build: cordova-phonegap http://docs.phonegap.com/
 control_versiones: git https://git-scm.com/documentation + github https://help.github.com/articles/github-flow/
 framework: jsview http://www.javascriptview.com/
 web-components: polymer https://www.polymer-project.org/1.0/docs/devguide/quick-tour
-libs: zepto.js (jquery light) http://zeptojs.com/, Velocity.js (animaciones) http://velocityjs.org/
+libs: zepto.js (jquery light) http://zeptojs.com/, Velocity.js (animaciones) http://velocityjs.org/, tinycolor.js (gestion colores) https://github.com/bgrins/TinyColor
 icons: font-awesome http://fontawesome.io/
 css: sass  http://sass-lang.com/guide
 emulación: http://emulate.phonegap.com/
@@ -72,7 +72,10 @@ opción b) abrimos un navegador en nuestro ordenador y nos conectamos a localhos
 # da igual la carpeta donde estemos
 picdocker
 # y dentro de la terminal del contenedor ejecutamos
-grunt & phonegap serve
+# para compilar el archivo app.sass to app.css
+grunt
+# para lanzar la app
+phonegap serve
 # para salir basta con CTRL+C y escribir exit
 ```
 

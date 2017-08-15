@@ -1,4 +1,5 @@
 var app = {
+  configuration: configuration,
   // Application Constructor
   initialize: function() {
     this.bindEvents();
@@ -32,10 +33,10 @@ var app = {
       // }
     });
     $JSView.declareView({
-      picDictionay: {
+      picDictionary: {
         url: '/pic-dictionary',
         template: 'views/pic-dictionary.html',
-        controller: 'picDictionay'
+        controller: 'picDictionary'
       }
     });
     $JSView.declareModal({
@@ -45,6 +46,6 @@ var app = {
       //   controller: 'modal'
       // }
     });
-    $JSView.initView('picDictionay');
+    $JSView.initView('picDictionary');
   }
 };

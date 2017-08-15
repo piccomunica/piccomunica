@@ -1,3 +1,9 @@
 body {
   width: 100%;
-  margin: 0px; }
+  margin: 0px;
+  font-family: 'Arial Nova', sans-serif; }
+
+#categories {
+  display: grid;
+  padding: 0;
+  margin: 0; }
