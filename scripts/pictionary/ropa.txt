@@ -1,0 +1,1 @@
+"abrigo", "calcetines", "camisa", "falda", "pantalon", "vestido", "zapatos-2", "zapatos",

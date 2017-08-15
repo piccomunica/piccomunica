@@ -1,6 +1,9 @@
 Polymer({
   is: 'pic-picto',
   properties: {
+    name: {
+      type: String
+    },
     description: {
       type: String
     },

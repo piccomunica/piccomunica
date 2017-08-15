@@ -1,2 +1,2 @@
-# Ignore bundler config.
-/platforms
+/platforms/
+/plugins/

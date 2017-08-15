@@ -4,6 +4,5 @@ body {
   font-family: 'Arial Nova', sans-serif; }
 
 #categories {
-  display: grid;
   padding: 0;
   margin: 0; }
