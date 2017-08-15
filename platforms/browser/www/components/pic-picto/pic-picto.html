@@ -1,0 +1,15 @@
+<link rel="import" href="../../js/libs/polymer/polymer.html">
+<link rel="import" href="pic-picto-style.html">
+
+<dom-module id="pic-picto">
+  <template>
+    <style include="pic-picto-style"></style>
+    <style></style>
+
+    <figure id={{description}} onclick="dictionaryController.makeMeBig('hola')">
+      <img src=img/pictionary/{{category}}/{{description}}.png >
+      <figcaption>{{description}}</figcaption>
+    </figure>
+  </template>
+  <script src="pic-picto.js"></script>
+</dom-module>

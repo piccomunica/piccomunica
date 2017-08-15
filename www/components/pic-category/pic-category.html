@@ -1,0 +1,17 @@
+<link rel="import" href="../../js/libs/polymer/polymer.html">
+<link rel="import" href="pic-category-style.html">
+
+<dom-module id="pic-category">
+  <template>
+    <style include="pic-category-style"></style>
+    <style></style>
+
+    <header id={{title}}-category>
+      <p>{{title}}</p>
+    </header>
+    <div class="picto-section" id={{title}}-section>
+      <content></content>
+    </div>
+  </template>
+  <script src="pic-category.js"></script>
+</dom-module>
