@@ -1,0 +1,1 @@
+"casas", "colegios", "edificio", "hospital", "parque", "parque_acuatico", "playa", "restaurante-2", "restaurante",

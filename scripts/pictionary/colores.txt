@@ -1,0 +1,1 @@
+"amarillo", "azul", "blanco", "naranja", "negro", "rojo", "verde_claro", "verde_oscuro",

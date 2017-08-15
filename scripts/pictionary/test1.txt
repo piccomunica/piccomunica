@@ -1,0 +1,1 @@
+"calcetines", "camisa", "falda", "vestido", "zapatos",

@@ -1,0 +1,1 @@
+"ambulancia", "autobus", "camion_de_bomberos", "camion_de_obras", "coches", "motocicletas", "policia", "taxi",

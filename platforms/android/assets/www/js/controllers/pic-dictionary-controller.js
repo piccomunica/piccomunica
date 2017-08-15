@@ -20,7 +20,8 @@ var dictionaryController = {
 		category.pictos.forEach(function(picto){
 			var picPicto = document.createElement("pic-picto");
 			picPicto.setAttribute('category', category.name);
-			picPicto.setAttribute('description', picto);
+			picPicto.setAttribute('name', picto);
+			picPicto.setAttribute('description', picto.replace(/_/g,' '));
 			dictionaryController.setBackground(category,picPicto);
 			parent.append(picPicto);
 		});
