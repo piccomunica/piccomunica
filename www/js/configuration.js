@@ -1,6 +1,6 @@
 var raw_info = {
   "acciones": ["apretar", "chillar", "cocinar", "dar", "enfadar", "lavarse_los_dientes", "leer", "llorar", "montar_a_caballo", "nadar", "sonarse", "sonreir"],
-  "alimentación": ["agua", "espaguetis", "galletas", "helado", "naranja-2", "pollo_asado", "salsa_ketchup", "tableta_de_chocolate", "tarta", "trozo_de_queso", "zumo"],
+  "alimentacion": ["agua", "espaguetis", "galletas", "helado", "naranja-2", "pollo_asado", "salsa_ketchup", "tableta_de_chocolate", "tarta", "trozo_de_queso", "zumo"],
   "animales": ["cerdo", "delfin", "gato", "leon", "mono", "pajaro", "perro", "pez", "tortuga", "vaca"],
   "colores": ["amarillo", "azul", "blanco", "naranja", "negro", "rojo", "verde_claro", "verde_oscuro"],
   "instrumentos": ["armonica", "bateria", "guitarra", "guitarra_electrica", "maracas", "pandereta", "piano", "tambor", "trompeta", "violin"],
