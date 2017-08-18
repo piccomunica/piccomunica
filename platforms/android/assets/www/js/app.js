@@ -9,6 +9,12 @@ var app = {
   // Bind any events that are required on startup. Common events are:
   // 'load', 'deviceready', 'offline', and 'online'.
   bindEvents: function() {
+    var loadingImg = new Image(window.innerWidth, window.innerHeight);
+    loadingImg.onload = function(){
+      document.body.appendChild(loadingImg);
+    }
+    loadingImg.src="/img/img_inicio.jpg";
+    //$('#loading_img').load(this.onLoadImgReady);
     document.addEventListener('deviceready', this.onDeviceReady, false);
   },
   // deviceready Event Handler
@@ -21,6 +27,10 @@ var app = {
   // Update DOM on a Received Event
   receivedEvent: function(id) {
     app.jsview();
+  },
+  onLoadImgReady: function(){
+    debugger;
+      console.log("hey");
   },
   jsview: function(){
     // setea el tipo de menús disponibles

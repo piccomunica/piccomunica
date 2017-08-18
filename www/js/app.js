@@ -2,6 +2,7 @@ var app = {
   configuration: configuration,
   // Application Constructor
   initialize: function() {
+    this.onLoadImgReady();
     this.bindEvents();
   },
   // Bind Event Listeners
@@ -21,6 +22,14 @@ var app = {
   // Update DOM on a Received Event
   receivedEvent: function(id) {
     app.jsview();
+  },
+  onLoadImgReady: function(){
+    var loadingImg = document.createElement('img');
+    $(loadingImg).attr('src',"img/img_inicio.jpg");
+    $(loadingImg).css({'width': screen.width, 'height': screen.height, 'position': 'absolute', 'top': 0, 'z-index': 10});
+    $(loadingImg).attr('id','img-inicio');
+    $('body').prepend(loadingImg);
+    console.log("loading app!");
   },
   jsview: function(){
     // setea el tipo de menús disponibles
