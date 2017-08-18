@@ -5,6 +5,9 @@ var dictionaryController = {
 	  },e);
 	  var categories = $('#categories')
 	  dictionaryController.appendCategoriesAndPictos(categories);
+	  setTimeout(function(){
+	  	$('#img-inicio').velocity("fadeOut", {duration:1000});
+    }, 700);
 	},
 	appendCategoriesAndPictos: function(parent){
 		app.configuration.categories.forEach(function(category){
