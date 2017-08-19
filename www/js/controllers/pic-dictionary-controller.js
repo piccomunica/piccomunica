@@ -1,7 +1,10 @@
 var dictionaryController = {
 	init: function(e){
 	  $JSView.dataView({
-	    'title': 'PicDiccionario'
+	    'title': 'PicDiccionario',
+	    'position': 'header',
+	    'gradient': 'green_gradient',
+	    'backfeature': 'false'
 	  },e);
 	  var categories = $('#categories')
 	  dictionaryController.appendCategoriesAndPictos(categories);
