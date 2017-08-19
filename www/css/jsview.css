@@ -34,4 +34,9 @@ jsv-container {
 
 jsv-menu {
 	position: absolute;
+  display: grid;
 	width: 100%; }
+
+jsv-option {
+  width: 100%;
+  text-align: center; }

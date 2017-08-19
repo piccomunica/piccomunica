@@ -38,7 +38,7 @@ var app = {
       menu: {
         url: '/menu',
         template: 'views/pic-menu.html',
-        controller: 'picMenu'
+        controller: 'menu'
       }
     });
     $JSView.declareView({
