@@ -26,7 +26,7 @@ var app = {
   onLoadImgReady: function(){
     var loadingImg = document.createElement('img');
     $(loadingImg).attr('src',"img/img_inicio.jpg");
-    $(loadingImg).css({'width': window.innerWidth, 'height': window.innerHeight, 'position': 'absolute', 'top': 0, 'z-index': 10});
+    $(loadingImg).css({'width': window.innerWidth, 'height': window.innerHeight, 'position': 'absolute', 'top': 0, 'z-index': 11});
     $(loadingImg).attr('id','img-inicio');
     $('body').prepend(loadingImg);
     console.log("loading app!");
@@ -35,11 +35,11 @@ var app = {
     // setea el tipo de menús disponibles
     $JSView.run('left');
     $JSView.declareMenu({
-      // menu: {
-      //   url: '/menu',
-      //   template: 'views/menuLeft.html',
-      //   controller: 'menu'
-      // }
+      menu: {
+        url: '/menu',
+        template: 'views/pic-menu.html',
+        controller: 'picMenu'
+      }
     });
     $JSView.declareView({
       picDictionary: {

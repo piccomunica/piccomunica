@@ -4,5 +4,8 @@ $JSView.controller = {
   },
   picDictionary: function(e){
   	dictionaryController.init(e);
+  },
+  menu: function(e){
+  	menuController.init(e);
   }
 }
