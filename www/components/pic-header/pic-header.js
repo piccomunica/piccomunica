@@ -10,6 +10,9 @@ Polymer({
     gradient: {
       type: String
     },
+    feature: {
+      type: String
+    },
     backfeature: {
       type: String
     }
@@ -17,7 +20,7 @@ Polymer({
   attached: function(){
   	this.addCssClass();
   	if(this.backfeature != 'false'){
-  		this.addBackFeature();
+  		this.addBackFeature(this.feature);
   	};
   },
   addCssClass: function(){
@@ -25,8 +28,8 @@ Polymer({
   	$('pic-header header').addClass(this.position);
   	$('pic-header header').addClass(this.gradient);
   },
-  addBackFeature: function(){
-  	var iconBack = '<i class="fa fa-chevron-left fa-2x" aria-hidden="true" style="color: white;" onclick="$(\'jsv-main\').css({animation: \'to-left 1s forwards;\'});"></i>';
+  addBackFeature: function(feature){
+  	var iconBack = '<i class="fa fa-chevron-left fa-2x" aria-hidden="true" style="color: white;" onclick="'+feature+'"></i>';
   	$('#'+this.position+'-icon-back').html(iconBack);
   }
 });

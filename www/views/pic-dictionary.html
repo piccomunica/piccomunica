@@ -1,11 +1,11 @@
 <jsv-header>
 	<pic-header logo={{title}} position={{position}} gradient={{gradient}} backfeature={{backfeature}}>
-	  <i class="fa fa-cog fa-2x" aria-hidden="true" style="color: white;" onclick="$('jsv-main').css({animation: 'to-right 1s forwards;'});"></i>
+	  <i class="fa fa-cog fa-2x" aria-hidden="true" style="color: white;" onclick="menuController.open();"></i>
 	</pic-header>
 </jsv-header>
 <jsv-content>
 	<jsv-list>
-		<ul id="categories">
+		<ul id="categories" data-columns={{columns}}>
 			<!-- las categorías y sus pictos son añadidad via js -->
 		</ul>
   </jsv-list>
