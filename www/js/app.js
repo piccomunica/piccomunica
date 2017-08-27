@@ -1,4 +1,5 @@
 var app = {
+  editableCategory: null,
   configuration: configuration,
   // Application Constructor
   initialize: function() {

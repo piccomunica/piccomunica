@@ -5,32 +5,37 @@ var dictionaryController = {
 	    'position': 'header',
 	    'gradient': 'green_gradient',
 	    'backfeature': 'false',
-	    'columns': configuration.columns
+	    'columns': app.configuration.columns
 	  },e);
-	  var categories = $('#categories');
+	  $('#categories').on('new-category',this.prependNewCategory);
 	  $(document).on('number-columns-modificated',this.updateNumberOfColumns);
-	  dictionaryController.appendCategoriesAndPictos(categories);
+	  dictionaryController.appendCategoriesAndPictos();
 	  setTimeout(function(){
 	  	$('#img-inicio').velocity("fadeOut", {duration:1000});
     }, 700);
 	},
-	appendCategoriesAndPictos: function(parent){
+	aditionCategoryAndPictos: function(category,adition){
+  	var picCategory = document.createElement("pic-category");
+  	picCategory.setAttribute('title', category.name.capitalize());
+  	picCategory.setAttribute('category', category.name);
+  	picCategory.setAttribute('colour', category.colour);
+  	picCategory.setAttribute('collapsibleicon', 'fa-chevron-up');
+  	(adition != 'prepend')? $('#categories').append(picCategory) : $('#categories').prepend(picCategory);
+	  $(picCategory).on('updated-category',this.updateCategory);
+	  $(picCategory).on('removed-category',this.removeCategory);
+  	var picSection = $(picCategory.lastElementChild)
+  	dictionaryController.appendPictos(category,picSection);
+	},
+	appendCategoriesAndPictos: function(){
 		app.configuration.categories.forEach(function(category){
-	  	var picCategory = document.createElement("pic-category");
-	  	picCategory.setAttribute('title', category.name.capitalize());
-	  	picCategory.setAttribute('category', category.name);
-	  	picCategory.setAttribute('colour', category.colour);
-	  	picCategory.setAttribute('collapsibleicon', 'fa-chevron-up');
-	  	parent.append(picCategory);
-	  	var picSection = $(picCategory.lastElementChild)
-	  	dictionaryController.appendPictos(category,picSection);
+			dictionaryController.aditionCategoryAndPictos(category,'append');
 	  });
 	},
 	appendPictos: function(category,parent){
 		category.pictos.forEach(function(picto){
 			var picPicto = document.createElement("pic-picto");
-			picPicto.setAttribute('category', category.name);
 			picPicto.setAttribute('name', picto);
+			picPicto.setAttribute('folder', category.folder);
 			picPicto.setAttribute('description', picto.replace(/_/g,' '));
 			dictionaryController.setBackground(category,picPicto);
 			parent.append(picPicto);
@@ -47,5 +52,23 @@ var dictionaryController = {
   	$('pic-picto').forEach(function(picto){
   		picto.setFontSize();
   	});
+  },
+  prependNewCategory: function(){
+  	var category = app.configuration.categories.last();
+  	dictionaryController.aditionCategoryAndPictos(category,'prepend');
+  	menuController.close();
+  },
+  updateCategory: function(){
+  	var picCategory = event.target;
+  	var picSection = $(picCategory.lastElementChild)
+  	var category = $('micro-configuration-mobile')[0].getCategory();
+  	picCategory.updateCategory(category);
+  	$(picSection).empty();
+  	dictionaryController.appendPictos(category,picSection);
+  	menuController.close();
+  },
+  removeCategory: function(){
+  	$(event.target).remove();
+  	menuController.close();
   }
 };
