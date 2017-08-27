@@ -15,7 +15,7 @@ Polymer({
     }
   },
   attached: function(){
-    this.setCollapsibleIcons();
+    this.setCollapsibleIcon();
   	this.setGradient();
     this.setNumberOfColumns();
     this.categoryToggle();
@@ -35,11 +35,12 @@ Polymer({
   },
   changeIcon: function(picCategory,e){
     var newIcon = picCategory.collapsibleicon == 'fa-chevron-up' ? 'fa-chevron-down' : 'fa-chevron-up';
-    $(e.target).removeClass(picCategory.collapsibleicon).addClass(newIcon);
+    $('#'+this.category+'-category i.'+picCategory.collapsibleicon).remove();
     picCategory.collapsibleicon = newIcon;
+    this.setCollapsibleIcon();
   },
-  setCollapsibleIcons: function(){
-    $('#'+this.category+'-category i').addClass('fa '+this.collapsibleicon+' fa-1x');
+  setCollapsibleIcon: function(){
+    $('#'+this.category+'-category').append('<i aria-hidden="true" style="color: white;" class="style-scope pic-category fa '+this.collapsibleicon+' fa-1x"></i>');
   },
   setGradient: function(){
   	var colorLeft = tinycolor(this.colour).toString();
