@@ -73,14 +73,16 @@ Polymer({
     app.configuration.categories.forEach(function(category){
       option = document.createElement('option');
       $(option).text(category.name.capitalize());
-      $(option).val(category.name);
+      $(option).val(category.id);
       $(select).append(option);
     });
     $('#micro-mobile').append(select);
   },
-  renderInfoCategory: function(){
+  renderInfoCategory: function(action){
+    var thisController = $('micro-configuration-mobile')[0];
     var containerDiv = document.createElement('div');
-    $(containerDiv).addClass('style-scope micro-configuration-mobile category-info-container container-disabled');
+    $(containerDiv).addClass('style-scope micro-configuration-mobile category-info-container');
+    if(action == 'edit'){ $(containerDiv).addClass('container-disabled'); };
       var nameRowDiv = document.createElement('div');
       $(nameRowDiv).addClass('style-scope micro-configuration-mobile row-info-category-name');
         var labelName = document.createElement('label');
@@ -112,10 +114,19 @@ Polymer({
         var cancelButton = document.createElement('div');
         $(cancelButton).addClass('style-scope micro-configuration-mobile button');
         $(cancelButton).css('justify-self: start;');
-        $(cancelButton).text('CANCELAR');
+        if(action == 'edit'){
+          var textCancel = 'BORRAR';
+          var method = "$('micro-configuration-mobile')[0].removeCategory();";
+        }else{
+          var textCancel = 'CANCELAR';
+          var method = "menuController.disableMicroConfigurationMobile();";
+        };
+        changeOnClickJs(cancelButton,method);
+        $(cancelButton).text(textCancel);
         var acceptButton = document.createElement('div');
         $(acceptButton).addClass('style-scope micro-configuration-mobile button');
         $(acceptButton).css('justify-self: end;');
+        changeOnClickJs(acceptButton,"$('micro-configuration-mobile')[0].writeCategory('"+action+"');")
         $(acceptButton).text('GUARDAR');
         $(buttonsRowDiv).append(cancelButton);
         $(buttonsRowDiv).append(acceptButton);
@@ -127,13 +138,40 @@ Polymer({
     $('#micro-mobile input[type="text"]').val(category.name);
     $('#micro-mobile input[type="color"]').val(tinycolor(category.colour).toHexString());
   },
+  getCategory: function(){
+    var name = $('#micro-mobile input[type="text"]').val();
+    var colour = $('#micro-mobile input[type="color"]').val();
+    var id = $('select').val();
+    var category = app.configuration.loadCategory(id);
+    var folder = (category)? category.folder : undefined;
+    var pictos = (category)? category.pictos : undefined;
+    return new Category(id,name,folder,colour,pictos);
+  },
+  removeCategory: function(){
+    var thisController = $('micro-configuration-mobile')[0];
+    var category = thisController.getCategory();
+    app.configuration.removeCategory(category);
+  },
+  writeCategory: function(action){
+    var thisController = $('micro-configuration-mobile')[0];
+    var category = thisController.getCategory();
+    if(action == 'edit'){
+      app.configuration.updateCategory(app.editableCategory,category);
+    }else{
+      app.configuration.createCategory(category);
+    };
+  },
+  renderNewCategoryConfigurator: function(){
+    var thisController = $('micro-configuration-mobile')[0];
+    thisController.renderInfoCategory('new');
+  },
   renderCategoriesEditConfigurator: function(){
     var thisController = $('micro-configuration-mobile')[0];
     thisController.renderSelectCategories();
-    thisController.renderInfoCategory();
+    thisController.renderInfoCategory('edit');
     $('#micro-mobile select').on('change',function(){
-      app.editableCategory = app.configuration.categories.find(function(category){ return category.name == event.target.value })
-      thisController.setInfoCategory(app.editableCategory);
+      var category = app.configuration.loadCategory(event.target.value);
+      thisController.setInfoCategory(category);
     });
   },
   removeConfigurator: function(){
