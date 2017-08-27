@@ -6,7 +6,7 @@ hybrid_build: cordova-phonegap http://docs.phonegap.com/
 control_versiones: git https://git-scm.com/documentation + github https://help.github.com/articles/github-flow/
 framework: jsview http://www.javascriptview.com/
 web-components: polymer https://www.polymer-project.org/1.0/docs/devguide/quick-tour
-libs: zepto.js (jquery light) http://zeptojs.com/, Velocity.js (animaciones) http://velocityjs.org/, tinycolor.js (gestion colores) https://github.com/bgrins/TinyColor
+libs: zepto.js (jquery light) http://zeptojs.com/, Velocity.js (animaciones) http://velocityjs.org/, tinycolor.js (gestion colores) https://github.com/bgrins/TinyColor, jquery.keyframes.js (creación dinámica de animaciones css via js) http://keyframes.github.io/jQuery.Keyframes/
 icons: font-awesome http://fontawesome.io/
 css: sass  http://sass-lang.com/guide
 emulación: http://emulate.phonegap.com/
