@@ -1,13 +1,40 @@
 <pic-header logo={{title}} position={{position}} gradient={{gradient}} feature={{feature}} backfeature={{backfeature}}>
 </pic-header>
 <jsv-menu>
-  <micro-configuration-mobile title=""></micro-configuration-mobile>
+  <!-- <micro-configuration-mobile title=""></micro-configuration-mobile> -->
   <div class="menu_options">
-  	<jsv-option id="category-new" class="green_gradient green_border_bottom" onclick="menuController.activeMicroConfigurationMobile();">Crear Categoría</jsv-option>
-  	<jsv-option id="categories-edit" class="green_gradient green_border_bottom" onclick="menuController.activeMicroConfigurationMobile();">Editar/Borrar Categoría</jsv-option>
-  	<jsv-option class="green_gradient green_border_bottom" onclick="">Ordenar Categorías</jsv-option>
-  	<jsv-option id="columns-conf" class="green_gradient green_border_bottom" onclick="menuController.activeMicroConfigurationMobile();">Número de columnas</jsv-option>
-  	<jsv-option class="green_gradient green_border_bottom" onclick="">Activar/Desactivar audio</jsv-option>
-  	<jsv-option class="green_gradient green_border_bottom" onclick="">Salir al Menú Principal</jsv-option>
+  	<jsv-option id="categories-edit" class="green_gradient" onclick="">Modificar Categoría</jsv-option>
+  	<jsv-option id="category-new" class="green_gradient" onclick="">Crear Categoría</jsv-option>
+  	<jsv-option class="green_gradient" onclick="">Ordenar Categorías</jsv-option>
+  	<jsv-option id="columns-conf" class="green_gradient">
+  		Tamaño de los pictogramas<br>
+  		<div class="control-group">
+		    <label class="control control-radio" onclick="menuController.updateStateOfColumns();">
+		        Pequeños
+		          <input type="radio" name="columns" value="5"/>
+		        <div class="control_indicator"></div>
+		    </label>
+		    <label class="control control-radio" onclick="menuController.updateStateOfColumns();">
+		        Medianos
+		          <input type="radio" name="columns" value="3"/>
+		        <div class="control_indicator"></div>
+		    </label>
+			</div>
+  	</jsv-option>
+  	<jsv-option class="green_gradient" onclick="">
+  		<div class="control-group" style="grid-template-columns: 100%;">
+		    <label class="control control-radio audio-menu" onclick="">
+		        Audio<br>
+		        <p style="font-family: 'Arial Nova', sans-serif; margin: 0; font-size: 0.7em;">(Se reproducirá la palabra del pictograma)</p>
+		          <input type="radio" name="audio" value="true"/>
+		        <div class="control_indicator"></div>
+		    </label>
+			</div>
+  	</jsv-option>
+  	<jsv-option class="blue_gradient" onclick="">
+  		<div style="display: grid; grid-template-columns: 10% 90%; text-align: center;">
+  			<i class="fa fa-bars fa-lg" aria-hidden="true" style="align-self: center;"></i><span>Salir al Menú Principal</span>
+  		</div>
+  	</jsv-option>
   </div>
 </jsv-menu>
