@@ -7,7 +7,7 @@ Polymer({
     description: {
       type: String
     },
-    category: {
+    folder: {
       type: String
     },
     colour: {
