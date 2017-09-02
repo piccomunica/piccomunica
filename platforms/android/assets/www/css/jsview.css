@@ -8,11 +8,35 @@ Here you can write your custom CSS
 */
 
 /*Generic*/
-jsv-main, jsv-container, jsv-view{
-    position: absolute;
-    background-color: #fff;
-    width: 100%;
-    top: 0px;
-    bottom: 0px;
-    overflow:scroll;
-    z-index: 9}
+jsv-main, jsv-container, jsv-view {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  overflow:scroll;
+  z-index: 9; }
+
+jsv-main {
+  z-index: 10;
+  left: -100%;
+  width: 100%;
+  overflow: auto;
+  display: block; }
+
+jsv-menu-left {
+	position: absolute;
+	width: 100%;
+	height: 100%; }
+
+jsv-container {
+	display: none; }
+
+jsv-menu {
+	position: absolute;
+  display: grid;
+	width: 100%; }
+
+jsv-option {
+  width: 100%;
+  text-align: center; }

@@ -25,6 +25,7 @@ var dictionaryController = {
 	  	var picSection = $(picCategory.lastElementChild)
 	  	dictionaryController.appendPictos(category,picSection);
 	  });
+		$('pic-picto').on("click", this.makeMeBig);
 	},
 	appendPictos: function(category,parent){
 		category.pictos.forEach(function(picto){
@@ -35,6 +36,36 @@ var dictionaryController = {
 			dictionaryController.setBackground(category,picPicto);
 			parent.append(picPicto);
 		});
+	},
+	makeMeBig: function(event){
+		var enlace;
+		var blanco = event.target;
+		var picImg = document.createElement("img");
+		picImg.setAttribute("alt", "Imagen aumentada de un picto");
+		picImg.setAttribute("width", "100%");
+		picImg.setAttribute("height", "100%");
+		while(blanco.nodeName != "PIC-PICTO"){
+			blanco = blanco.parentNode;
+		}
+		enlace = "img/pictionary/"+blanco.category+"/"+blanco.name+".png";
+		console.log(enlace);
+		picImg.setAttribute("src", enlace);
+		$("#marco-picto").html(picImg);
+		this.bigPictoControler;
+	},
+	bigPictoControler: function(){
+		$("body").addClass("stop-scrolling");
+		$("#categories").addClass("stop-scrolling");
+		$('body').bind('touchmove', function(e){e.preventDefault()})
+		$("#fondo-picto").addClass("picto-big").removeClass("picto-small");
+
+		//$("picto-grande").click();
+		$("#marco-picto").on("click", function(){
+			$("body").removeClass("stop-scrolling");
+			$("#categories").removeClass("stop-scrolling");
+			$('body').unbind('touchmove');
+			$("#fondo-picto").addClass("picto-big").removeClass("picto-small");
+		})
 	},
 	setBackground: function(category,picto){
   	var color = tinycolor(category.colour).toString();

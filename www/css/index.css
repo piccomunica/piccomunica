@@ -113,3 +113,29 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+.stop-scrolling{
+    overflow: hidden;
+}
+#marco-picto{
+    margin: auto;
+    width: 200px; 
+    height: 200px;
+    z-index: 2;
+    border: 10px solid blue;
+    border-radius: 5px;
+}
+.picto-small{
+    display: none;
+}
+
+.picto-big{
+    background-color: grey;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0.1;
+    z-index: 1;
+}
+#frase-tipica{
+    color: blue;
+}

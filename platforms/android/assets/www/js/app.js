@@ -2,6 +2,7 @@ var app = {
   configuration: configuration,
   // Application Constructor
   initialize: function() {
+    this.onLoadImgReady();
     this.bindEvents();
   },
   // Bind Event Listeners
@@ -9,12 +10,6 @@ var app = {
   // Bind any events that are required on startup. Common events are:
   // 'load', 'deviceready', 'offline', and 'online'.
   bindEvents: function() {
-    var loadingImg = new Image(window.innerWidth, window.innerHeight);
-    loadingImg.onload = function(){
-      document.body.appendChild(loadingImg);
-    }
-    loadingImg.src="/img/img_inicio.jpg";
-    //$('#loading_img').load(this.onLoadImgReady);
     document.addEventListener('deviceready', this.onDeviceReady, false);
   },
   // deviceready Event Handler
@@ -29,18 +24,22 @@ var app = {
     app.jsview();
   },
   onLoadImgReady: function(){
-    debugger;
-      console.log("hey");
+    var loadingImg = document.createElement('img');
+    $(loadingImg).attr('src',"img/img_inicio.jpg");
+    $(loadingImg).css({'width': window.innerWidth, 'height': window.innerHeight, 'position': 'absolute', 'top': 0, 'z-index': 11});
+    $(loadingImg).attr('id','img-inicio');
+    $('body').prepend(loadingImg);
+    console.log("loading app!");
   },
   jsview: function(){
     // setea el tipo de menús disponibles
     $JSView.run('left');
     $JSView.declareMenu({
-      // menu: {
-      //   url: '/menu',
-      //   template: 'views/menuLeft.html',
-      //   controller: 'menu'
-      // }
+      menu: {
+        url: '/menu',
+        template: 'views/pic-menu.html',
+        controller: 'menu'
+      }
     });
     $JSView.declareView({
       picDictionary: {

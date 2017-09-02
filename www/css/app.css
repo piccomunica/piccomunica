@@ -1,34 +1,55 @@
+/* line 1, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
 body {
   width: 100%;
   margin: 0px;
-  font-family: 'Arial Nova', sans-serif; }
+  font-family: 'Arial Nova', sans-serif;
+}
 
+/* line 6, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
 #categories {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 @keyframes to-left {
   0% {
-    left: 0%; }
+    left: 0%;
+  }
   100% {
-    left: -100%; } }
+    left: -100%;
+  }
+}
 
 @keyframes to-right {
   0% {
-    left: -100%; }
+    left: -100%;
+  }
   100% {
-    left: -0%; } }
+    left: -0%;
+  }
+}
 
+/* line 22, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
 .green_gradient {
   background-color: #4fb948;
   background-image: -webkit-linear-gradient(left, #acdc48, #4fb948);
   background-image: -o-linear-gradient(left, #acdc48, #4fb948);
   background-image: -moz-linear-gradient(left, #acdc48, #4fb948);
-  background-image: linear-gradient(left, #acdc48, #4fb948); }
+  background-image: linear-gradient(left, #acdc48, #4fb948);
+}
 
+/* line 29, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
 .red_gradient {
   background-color: #ec0000;
   background-image: -webkit-linear-gradient(left, #ff4b00, #ec0000);
   background-image: -o-linear-gradient(left, #ff4b00, #ec0000);
   background-image: -moz-linear-gradient(left, #ff4b00, #ec0000);
-  background-image: linear-gradient(left, #ff4b00, #ec0000); }
+  background-image: linear-gradient(left, #ff4b00, #ec0000);
+}
+
+/* line 36, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.stop-scrolling {
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=../css/app.map */

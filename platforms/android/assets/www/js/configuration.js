@@ -32,5 +32,6 @@ function buildPictionaryData(){
 var datas = buildPictionaryData();
 
 var configuration = {
-  categories: datas.pictionary
+  categories: datas.pictionary,
+  columns: 5
 };
