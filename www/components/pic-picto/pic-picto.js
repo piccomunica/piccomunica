@@ -16,7 +16,7 @@ Polymer({
   },
   attached: function(){
     this.setFontSize();
-    
+
     console.log('local DOM initialized');
   },
   setFontSize: function(){

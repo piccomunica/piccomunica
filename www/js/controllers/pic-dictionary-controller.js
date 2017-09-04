@@ -32,45 +32,39 @@ var dictionaryController = {
 	  });
 		$('pic-picto').on("click", this.makeMeBig);
 	},
+	renderPicto: function(name,folder,colour){
+		var picPicto = document.createElement("pic-picto");
+		picPicto.setAttribute('name', name);
+		picPicto.setAttribute('folder', folder);
+		picPicto.setAttribute('colour', colour);
+		picPicto.setAttribute('description', name.replace(/_/g,' '));
+		dictionaryController.setBackground(colour,picPicto);
+		return picPicto;
+	},
 	appendPictos: function(category,parent){
 		category.pictos.forEach(function(picto){
-			var picPicto = document.createElement("pic-picto");
-			picPicto.setAttribute('name', picto);
-			picPicto.setAttribute('folder', category.folder);
-			picPicto.setAttribute('description', picto.replace(/_/g,' '));
-			dictionaryController.setBackground(category,picPicto);
+			var picPicto = dictionaryController.renderPicto(picto,category.folder,category.colour);
 			parent.append(picPicto);
 		});
 	},
 	makeMeBig: function(event){
-		var enlace;
 		var blanco = event.target;
-		var picImg = document.createElement("img");
-		picImg.setAttribute("alt", "Imagen aumentada de un picto");
-		picImg.setAttribute("width", "270px");
-		picImg.setAttribute("height", "270px");
 		while(blanco.nodeName != "PIC-PICTO"){
 			blanco = blanco.parentNode;
-		}
-		console.log(blanco);
-		enlace = "img/pictionary/"+blanco.folder+"/"+blanco.name+".png";
-		console.log(enlace);
-		picImg.setAttribute("src", enlace);
-		var marco = $("#marco-picto");
-		marco.html(picImg);
-		
-		var category_colour = blanco.parentNode.parentNode.colour;
-		var pic_color = tinycolor(category_colour).toString();
-    	marco.css("border-color", pic_color);
-		var leyenda = document.createElement("figcaption");
-		leyenda.textContent= blanco.description;
-		marco.append(leyenda);
-		
-		dictionaryController.bigPictoControler(marco);
+		};
+		var folder = blanco.folder;
+		var name = blanco.name;
+		var colour = blanco.colour;
+
+		var picPicto = dictionaryController.renderPicto(name,folder,colour);
+
+		$(picPicto).addClass('style-scope pic-picto big');
+		$("#fondo-picto").append(picPicto);
+		dictionaryController.bigPictoControler(picPicto);
 	},
-	bigPictoControler: function(marco){
+	bigPictoControler: function(picto){
 		var $body = $("body");
-		var fondo = $("#fondo-picto"); 
+		var fondo = $("#fondo-picto");
 		//Prevenir scrolling
 		$body.on('scroll touchmove mousewheel', function(e){
   			e.preventDefault();
@@ -80,19 +74,18 @@ var dictionaryController = {
 		$body.css("overflow", "hidden");
 		fondo.css("height", window.innerHeight);
 		fondo.addClass("picto-big").removeClass("picto-small");
-		marco.addClass("marco-pic-grande");
-	
+
 		//salir vista picto grande
-		marco.on("click", function(){
+		$(picto).on("click", function(){
 			$body.off('scroll touchmove mousewheel');
-			fondo.removeClass("picto-big").addClass("picto-small");
-			marco.removeClass("marco-pic-grande");
-			marco.html("");
+			fondo.removeClass("picto-big").addClass("picto-small").css('height',0);
+			// marco.removeClass("marco-pic-grande");
+			fondo.html("");
 		})
 	},
-	setBackground: function(category,picto){
-  	var color = tinycolor(category.colour).toString();
-    $(picto).css({background: color});
+	setBackground: function(colour,picto){
+  	var colour = tinycolor(colour).toString();
+    $(picto).css({background: colour});
   },
   updateNumberOfColumns: function(e){
   	$('pic-category').forEach(function(category){
