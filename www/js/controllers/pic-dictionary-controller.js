@@ -47,29 +47,47 @@ var dictionaryController = {
 		var blanco = event.target;
 		var picImg = document.createElement("img");
 		picImg.setAttribute("alt", "Imagen aumentada de un picto");
-		picImg.setAttribute("width", "100%");
-		picImg.setAttribute("height", "100%");
+		picImg.setAttribute("width", "270px");
+		picImg.setAttribute("height", "270px");
 		while(blanco.nodeName != "PIC-PICTO"){
 			blanco = blanco.parentNode;
 		}
-		enlace = "img/pictionary/"+blanco.category+"/"+blanco.name+".png";
+		console.log(blanco);
+		enlace = "img/pictionary/"+blanco.folder+"/"+blanco.name+".png";
 		console.log(enlace);
 		picImg.setAttribute("src", enlace);
-		$("#marco-picto").html(picImg);
-		this.bigPictoControler;
+		var marco = $("#marco-picto");
+		marco.html(picImg);
+		
+		var category_colour = blanco.parentNode.parentNode.colour;
+		var pic_color = tinycolor(category_colour).toString();
+    	marco.css("border-color", pic_color);
+		var leyenda = document.createElement("figcaption");
+		leyenda.textContent= blanco.description;
+		marco.append(leyenda);
+		
+		dictionaryController.bigPictoControler(marco);
 	},
-	bigPictoControler: function(){
-		$("body").addClass("stop-scrolling");
-		$("#categories").addClass("stop-scrolling");
-		$('body').bind('touchmove', function(e){e.preventDefault()})
-		$("#fondo-picto").addClass("picto-big").removeClass("picto-small");
-
-		//$("picto-grande").click();
-		$("#marco-picto").on("click", function(){
-			$("body").removeClass("stop-scrolling");
-			$("#categories").removeClass("stop-scrolling");
-			$('body').unbind('touchmove');
-			$("#fondo-picto").addClass("picto-big").removeClass("picto-small");
+	bigPictoControler: function(marco){
+		var $body = $("body");
+		var fondo = $("#fondo-picto"); 
+		//Prevenir scrolling
+		$body.on('scroll touchmove mousewheel', function(e){
+  			e.preventDefault();
+  			e.stopPropagation();
+  		return false;
+		})
+		$body.css("overflow", "hidden");
+		fondo.css("height", window.innerHeight);
+		fondo.addClass("picto-big").removeClass("picto-small");
+		marco.addClass("marco-pic-grande");
+	
+		//salir vista picto grande
+		marco.on("click", function(){
+			$body.off('scroll touchmove mousewheel');
+			fondo.removeClass("picto-big").addClass("picto-small");
+			marco.removeClass("marco-pic-grande");
+			marco.html("");
 		})
 	},
 	setBackground: function(category,picto){

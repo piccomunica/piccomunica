@@ -19,7 +19,7 @@ Polymer({
   },
   attached: function(){
   	this.addCssClass();
-  	if(this.backfeature != 'false'){
+  	if(this.backfeature == 'true'){
   		this.addBackFeature(this.feature);
   	};
   },

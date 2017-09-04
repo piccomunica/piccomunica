@@ -57,5 +57,11 @@ Polymer({
       .css({background: bgWebkit})
       .css({background: bgMoz})
       .css({background: bgOpera});
+  },
+  updateCategory: function(category){
+    this.setAttribute('title', category.name.capitalize());
+    this.setAttribute('category', category.name);
+    this.setAttribute('colour', category.colour);
+    this.setGradient();
   }
 });
