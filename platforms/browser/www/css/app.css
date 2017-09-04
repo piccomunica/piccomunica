@@ -1,8 +1,170 @@
+/* line 1, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
 body {
   width: 100%;
   margin: 0px;
-  font-family: 'Arial Nova', sans-serif; }
+  font-family: 'Arial Nova', sans-serif;
+}
 
+/* line 6, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
 #categories {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
+
+@keyframes to-left {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes to-right {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: -0%;
+  }
+}
+
+/* line 22, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.green_gradient {
+  background-color: #4fb948;
+  background-image: -webkit-linear-gradient(left, #acdc48, #4fb948);
+  background-image: -o-linear-gradient(left, #acdc48, #4fb948);
+  background-image: -moz-linear-gradient(left, #acdc48, #4fb948);
+  background-image: linear-gradient(left, #acdc48, #4fb948);
+}
+
+/* line 29, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.red_gradient {
+  background-color: #ec0000;
+  background-image: -webkit-linear-gradient(left, #ff4b00, #ec0000);
+  background-image: -o-linear-gradient(left, #ff4b00, #ec0000);
+  background-image: -moz-linear-gradient(left, #ff4b00, #ec0000);
+  background-image: linear-gradient(left, #ff4b00, #ec0000);
+}
+
+/* line 36, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.blue_gradient {
+  background-color: #4c68b1;
+  background-image: -webkit-linear-gradient(left, #7aa7ee, #4c68b1);
+  background-image: -o-linear-gradient(left, #7aa7ee, #4c68b1);
+  background-image: -moz-linear-gradient(left, #7aa7ee, #4c68b1);
+  background-image: linear-gradient(left, #7aa7ee, #4c68b1);
+}
+
+/* line 43, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.menu_options {
+  padding-top: 0.25em;
+  background-color: white;
+  z-index: 2;
+  width: 85%;
+  margin: 10% auto;
+}
+
+/* line 50, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.control-group {
+  margin-top: 0.5em;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+/* line 55, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.control {
+  font-family: 'Arial Nova', sans-serif;
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  padding-top: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* line 64, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+/* line 69, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.control_indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 1px solid white;
+}
+
+/* line 77, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.control-radio, .control_indicator {
+  border-radius: 0%;
+  justify-self: center;
+}
+
+/* line 81, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.control_indicator:after {
+  box-sizing: unset;
+  font-family: FontAwesome;
+  content: '\f00c';
+  position: absolute;
+  display: none;
+}
+
+/* line 88, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.control input:checked ~ .control_indicator:after {
+  display: block;
+}
+
+/* line 91, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.control-radio .control_indicator:after {
+  left: 2px;
+  top: 2px;
+}
+
+/* line 95, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.audio-menu {
+  justify-self: start;
+  font-family: Forte;
+  font-size: 1em;
+}
+
+/* line 103, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.picto-big {
+  width: 100%;
+  background-color: grey;
+  z-index: 1;
+  background: rgba(77, 76, 77, 0.79);
+}
+
+/* line 109, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+.marco-pic-grande {
+  width: 270px;
+  height: 270px;
+  position: relative;
+  top: 7%;
+  left: 7%;
+  border-style: solid;
+  border-width: 10px 10px 65px 10px;
+  border-radius: 0.3em;
+}
+
+/* line 120, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+#marco-picto img {
+  border-radius: 0.2em;
+}
+
+/* line 122, /Users/valleinclan/Desktop/piccomunica/www/sass/app.sass */
+#marco-picto figcaption {
+  text-align: center;
+  word-wrap: break-word;
+  color: white;
+  font-size: 24px;
+}
+
+/*# sourceMappingURL=../css/app.map */

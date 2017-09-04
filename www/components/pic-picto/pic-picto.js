@@ -22,5 +22,5 @@ Polymer({
   setFontSize: function(){
     var size = 1.8-(0.25*(configuration.columns-1));
     $('pic-picto[name="'+this.name+'"] figcaption').css({'font-size': size+'em'});
-  }
+  },
 });
