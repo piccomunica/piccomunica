@@ -66,7 +66,7 @@ var dictionaryController = {
 		var $body = $("body");
 		var fondo = $("#fondo-picto");
 		//Prevenir scrolling
-		$body.on('scroll touchmove mousewheel', function(e){
+		fondo.bind('scroll touchmove mousewheel', function(e){
   			e.preventDefault();
   			e.stopPropagation();
   		return false;
@@ -77,7 +77,8 @@ var dictionaryController = {
 
 		//salir vista picto grande
 		$(picto).on("click", function(){
-			$body.off('scroll touchmove mousewheel');
+			fondo.unbind('scroll touchmove mousewheel');
+      $body.removeAttr('style');
 			fondo.removeClass("picto-big").addClass("picto-small").css('height',0);
 			// marco.removeClass("marco-pic-grande");
 			fondo.html("");
