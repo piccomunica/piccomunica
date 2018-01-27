@@ -1,10 +1,13 @@
 <jsv-header>
+  <!-- el header se añade via componente html -->
 	<pic-header logo={{title}} position={{position}} gradient={{gradient}} backfeature={{backfeature}}>
+    <!-- este contenido se renderiza dentro de la etiqueta content del componente pic-header -->
 	  <i class="fa fa-cog fa-2x" aria-hidden="true" style="color: white;" onclick="menuController.open();"></i>
 	</pic-header>
 </jsv-header>
 <jsv-content>
-	<div id="fondo-picto" class="picto-small" style="position: fixed; display: grid;"></div>
+  <!-- container del picto grande -->
+	<div id="container-big-picto" class="picto-small" style="position: fixed; display: grid;"></div>
 	<jsv-list>
 		<ul id="categories" data-columns={{columns}}>
 			<!-- las categorías y sus pictos son añadidad via js -->

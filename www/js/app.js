@@ -1,8 +1,11 @@
+// app: objeto básico
 var app = {
   editableCategory: null,
-  configuration: configuration,
   // Application Constructor
-  initialize: function() {
+  initialize: function(data_base) {
+    // setea las opciones by default
+    data_base.init(categories);
+    this.dataBase = data_base;
     this.onLoadImgReady();
     this.bindEvents();
   },
@@ -42,6 +45,7 @@ var app = {
         controller: 'menu'
       }
     });
+    // setea la vista inicial
     $JSView.declareView({
       picDictionary: {
         url: '/pic-dictionary',
@@ -56,6 +60,7 @@ var app = {
       //   controller: 'modal'
       // }
     });
+    // lanza la vista inicial
     $JSView.initView('picDictionary');
   }
 };

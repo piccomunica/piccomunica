@@ -17,9 +17,12 @@ Polymer({
       type: String
     }
   },
+  // este código se ejecuta cuando el componente está cargado
   attached: function(){
+    // añade estilos css
   	this.addCssClass();
   	if(this.backfeature == 'true'){
+      // añade el icono que permite la funcionalidad de regresar
   		this.addBackFeature(this.feature);
   	};
   },

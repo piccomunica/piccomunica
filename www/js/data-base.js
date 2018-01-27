@@ -1,3 +1,7 @@
+// el valor de raw info se genera automáticamente lanzando en consola:
+// ruta: scripts/
+// sh pictionary.sh
+// quitar la última coma de la última linea
 var raw_info = {
   "acciones": ["apretar", "chillar", "cocinar", "dar", "enfadar", "lavarse_los_dientes", "leer", "llorar", "montar_a_caballo", "nadar", "sonarse", "sonreir"],
   "alimentacion": ["agua", "espaguetis", "galletas", "helado", "naranja-2", "pollo_asado", "salsa_ketchup", "tableta_de_chocolate", "tarta", "trozo_de_queso", "zumo"],
@@ -12,30 +16,20 @@ var raw_info = {
 var categories = Object.keys(raw_info);
 var default_colours = ["cornflowerblue","gold","crimson","blueviolet","brown","cadetblue","chocolate","deeppink","darkblue","darkcyan","darkgoldenrod"];
 
-function Category(id=generateUUID(),name,folder='undefined',colour,pictos=['nuevo']){
-  this.id = id;
-  this.name = name;
-  this.folder = folder;
-  this.colour = colour;
-  this.pictos = pictos;
-};
-
-function buildPictionaryData(){
-  var datas = {};
-  datas.pictionary = [];
-  var index = 0;
-  categories.forEach(function(category_name){
-    datas.pictionary.push(new Category(undefined,category_name,category_name,default_colours[index],raw_info[category_name]));
-    index++;
-  });
-  return datas;
-};
-
-var datas = buildPictionaryData();
-
-var configuration = {
-  categories: datas.pictionary,
-  columns: 5,
+// objeto base de datos
+var dataBase = {
+  init: function(categories){
+    this.categories = []
+    this.columns = 5;
+    this.loadCategories(categories);
+  },
+  loadCategories: function(categories){
+    var index = 0;
+    categories.forEach(function(category_name){
+      dataBase.categories.push(new Category(undefined,category_name,category_name,default_colours[index],raw_info[category_name]));
+      index++;
+    });
+  },
   loadCategory: function(id){
     return this.categories.find(function(category){ return category.id == id })
   },

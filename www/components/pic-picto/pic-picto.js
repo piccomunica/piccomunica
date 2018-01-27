@@ -14,13 +14,14 @@ Polymer({
       type: String
     }
   },
+  // este código se ejecuta cuando el componente está cargado
   attached: function(){
     this.setFontSize();
-
-    console.log('local DOM initialized');
+    console.log('local DOM for pic-picto initialized');
   },
+  // ajusta el tamaño de la fuente
   setFontSize: function(){
-    var size = 1.8-(0.25*(configuration.columns-1));
+    var size = 1.8-(0.25*(app.dataBase.columns-1));
     $('pic-picto[name="'+this.name+'"] figcaption').css({'font-size': size+'em'});
   },
 });
