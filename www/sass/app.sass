@@ -1,24 +1,31 @@
+// basic
 body
-	width: 100%
-	margin: 0px
-	font-family: 'Arial Nova', sans-serif
+  width: 100%
+  margin: 0px
+  font-family: 'Arial Nova', sans-serif
 
+
+// pictionary
 #categories
-	padding: 0
-	margin: 0
+  padding: 0
+  margin: 0
 
-@keyframes to-left
-  0%
-  	left: 0%
-  100%
-  	left: -100%
+.picto-small
+  display: none
 
-@keyframes to-right
-  0%
-  	left: -100%
-  100%
-  	left: -0%
+.picto-big
+  width: 100%
+  background-color: grey
+  z-index: 1
+  background: rgba(77, 76, 77, 0.79)
 
+#exit-icon
+  position: absolute
+  top: 2%
+  right: 4%
+
+
+// backgroud gradiantes
 .green-gradient
   background-color: #4fb948
   background-image: -webkit-linear-gradient(left, #acdc48, #4fb948)
@@ -40,6 +47,8 @@ body
   background-image: -moz-linear-gradient(left, #7aa7ee, #4c68b1)
   background-image: linear-gradient(left, #7aa7ee, #4c68b1)
 
+
+// menú
 .menu-options
   padding-top: 0.25em
   background-color: white
@@ -97,31 +106,35 @@ body
   font-family: Forte
   font-size: 1em
 
-.picto-small
-  display:none
+// animaciones menú
+@keyframes to-left
+  0%
+    left: 0%
+  100%
+    left: -100%
 
-.picto-big
-  width: 100%
-  background-color: grey
-  z-index: 1
-  background: rgba(77, 76, 77, 0.79)
+@keyframes to-right
+  0%
+    left: -100%
+  100%
+    left: -0%
 
-.marco-pic-grande
-  width: 270px
-  height: 270px
-  position: relative
-  top: 7%
-  left: 7%
-  border-style: solid;
-  border-width: 10px 10px 65px 10px
-  border-radius: 0.3em
+// antiguo menú
+// .marco-pic-grande
+//   width: 270px
+//   height: 270px
+//   position: relative
+//   top: 7%
+//   left: 7%
+//   border-style: solid;
+//   border-width: 10px 10px 65px 10px
+//   border-radius: 0.3em
 
-#marco-picto
-  img
-    border-radius: 0.2em
-  figcaption
-    text-align: center
-    word-wrap: break-word
-    color: white
-    font-size: 30px
-
+// #marco-picto
+//   img
+//     border-radius: 0.2em
+//   figcaption
+//     text-align: center
+//     word-wrap: break-word
+//     color: white
+//     font-size: 30px

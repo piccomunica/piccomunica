@@ -7,17 +7,19 @@ body {
   padding: 0;
   margin: 0; }
 
-@keyframes to-left {
-  0% {
-    left: 0%; }
-  100% {
-    left: -100%; } }
+.picto-small {
+  display: none; }
 
-@keyframes to-right {
-  0% {
-    left: -100%; }
-  100% {
-    left: -0%; } }
+.picto-big {
+  width: 100%;
+  background-color: grey;
+  z-index: 1;
+  background: rgba(77, 76, 77, 0.79); }
+
+#exit-icon {
+  position: absolute;
+  top: 2%;
+  right: 4%; }
 
 .green-gradient {
   background-color: #4fb948;
@@ -97,27 +99,14 @@ body {
   font-family: Forte;
   font-size: 1em; }
 
-.picto-big {
-  width: 100%;
-  background-color: grey;
-  z-index: 1;
-  background: rgba(77, 76, 77, 0.79); }
+@keyframes to-left {
+  0% {
+    left: 0%; }
+  100% {
+    left: -100%; } }
 
-.marco-pic-grande {
-  width: 270px;
-  height: 270px;
-  position: relative;
-  top: 7%;
-  left: 7%;
-  border-style: solid;
-  border-width: 10px 10px 65px 10px;
-  border-radius: 0.3em; }
-
-#marco-picto img {
-  border-radius: 0.2em; }
-
-#marco-picto figcaption {
-  text-align: center;
-  word-wrap: break-word;
-  color: white;
-  font-size: 30px; }
+@keyframes to-right {
+  0% {
+    left: -100%; }
+  100% {
+    left: -0%; } }
