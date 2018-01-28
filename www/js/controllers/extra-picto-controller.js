@@ -6,13 +6,14 @@ var extraPictoController = {
     // creación del componente big picPicto
     var _picPicto = picPicto(picto.name,picto.folder,picto.colour);
     $(_picPicto).addClass('style-scope pic-picto big');
-    // render big picPicto
+    // render big picPicto with exit icon
     var container = $("#container-big-picto");
     extraPictoController.resizeContainer(container);
+    extraPictoController.addExitFeature(container,picto.colour);
     container.append(_picPicto);
     // añade funcionalidad a big picPicto
     extraPictoController.disableScrolling(container);
-    $(_picPicto).on("click",extraPictoController.makeMeSmall);
+    $("#exit-icon").on("click",extraPictoController.makeMeSmall);
   },
   //salir vista picto grande
   makeMeSmall: function(){
@@ -42,5 +43,9 @@ var extraPictoController = {
         e.stopPropagation();
       return false;
     });
+  },
+  addExitFeature: function(container,colour){
+    var iconBack = '<i id="exit-icon" class="fa fa-reply fa-3x" aria-hidden="true" style="color: '+colour+';"></i>';
+    container.html(iconBack);
   }
 };
