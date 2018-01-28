@@ -8,6 +8,8 @@ var menuController = {
 	    'feature': 'menuController.close();',
 	    'backfeature': true
 	  },e);
+    this.renderCategoryList();
+    this.categoryToggle();
 	},
   // abre el menú
 	open: function(){
@@ -20,6 +22,8 @@ var menuController = {
 	close: function(){
     // animación al cerrar
 		$('jsv-main').css({animation: 'to-left 1s forwards;'});
+    // oculta el listado de categorías a editar
+    $('#categories-edit ul').hide()
 	},
   // esta función se lanza desde pic-menu.html al pulsar sobre alguna de las opciones de columnas
 	updateStateOfColumns: function(){
@@ -38,4 +42,17 @@ var menuController = {
     app.dataBase.columns = columnsSize;
     $(document).trigger('number-columns-modificated');
   },
+  // añade listado de categorías disponibles
+  renderCategoryList: function(){
+    $('#categories-edit').append('<ul id="category-list" class="control"></ul>')
+    app.dataBase.categories.forEach(function(category){
+      $('#category-list').append('<li>'+category.name.capitalize()+'</li>')
+    });
+  },
+  // des/pliega el listado categorías colapsable
+  categoryToggle: function(){
+    $('#categories-edit p').on('click',function(e){
+      $('#categories-edit ul').toggle();
+    });
+  }
 };
