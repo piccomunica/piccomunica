@@ -69,8 +69,9 @@ $JSView = {
                 //Keep dom element in a variable
                 objElement = $v.select('#' + obj);
                 //Put all containers out of camera
-                objElement.classList.add('JSVcontainerRight');
-                objElement.classList.add('JSVcontainerTransition');
+                $(objElement).hide();
+                // objElement.classList.add('JSVcontainerRight');
+                // objElement.classList.add('JSVcontainerTransition');
                 //Save in the array the views declared with its options (url, template, controlator, ...)
                 if(e.hasOwnProperty(obj)){
                     JSVDeclareViews[obj] = e[obj];
@@ -85,10 +86,11 @@ $JSView = {
         //Keep dom element in a variable
         var objElement = $v.select('#' + e);
         //Put actual view into camera :)
-        objElement.classList.remove('JSVcontainerRight');
-        objElement.classList.add('JSVcontainerCenter');
-        objElement.classList.remove('JSVcontainerBackground');
-        objElement.classList.add('JSVcontainerForeground');
+        $(objElement).show();
+        // objElement.classList.remove('JSVcontainerRight');
+        // objElement.classList.add('JSVcontainerCenter');
+        // objElement.classList.remove('JSVcontainerBackground');
+        // objElement.classList.add('JSVcontainerForeground');
         //Read the template
         $JSVRequest.do(e,JSVDeclareViews[e].template,true);
         window.history.pushState(e, "Titulo", '');
@@ -127,21 +129,25 @@ $JSView = {
         //If the parent of this view YES is jsv-main, we move jsv-main to the left
         if($v.select('#' + JSVActualView).parentNode.tagName.toLowerCase() == 'jsv-container'){
             //Put the actual view out of camera
-            objMain.classList.add('JSVcontainerLeft')
-            objMain.classList.remove('JSVcontainerCenter')
+            $(objMain).css('display','none');
+            // objMain.classList.add('JSVcontainerLeft')
+            // objMain.classList.remove('JSVcontainerCenter')
             //Put the new view into the camera
-            objElement.classList.add('JSVcontainerCenter')
-            objElement.classList.remove('JSVcontainerRight')
+            $(objElement).css('display','unset');
+            // objElement.classList.add('JSVcontainerCenter')
+            // objElement.classList.remove('JSVcontainerRight')
         //If the parent of this view NO is jsv-main, we move this view to the left
         }else{
             //Keep dom element in a variable
             var objJSVActualView = $v.select('#' + JSVActualView);
             //Put the actual view out the camera
-            objJSVActualView.classList.add('JSVcontainerLeft')
-            objJSVActualView.classList.remove('JSVcontainerCenter')
+            $(objJSVActualView).css('display','none');
+            // objJSVActualView.classList.add('JSVcontainerLeft')
+            // objJSVActualView.classList.remove('JSVcontainerCenter')
             //Put the new view into the camera
-            objElement.classList.add('JSVcontainerCenter')
-            objElement.classList.remove('JSVcontainerRight')
+            $(objElement).css('display','unset');
+            // objElement.classList.add('JSVcontainerCenter')
+            // objElement.classList.remove('JSVcontainerRight')
         }
 
         //If the current view is different to the view query now
