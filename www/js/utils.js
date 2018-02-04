@@ -29,9 +29,9 @@ function generateUUID(){ // Public Domain/MIT
 }
 
 // añade el fondo de color a un picto
-function setBackgroundColour(colour,picto){
+function setBackgroundColour(colour,element){
   var colour = tinycolor(colour).toString();
-  $(picto).css({background: colour});
+  $(element).css({background: colour});
 };
 
 // setea el fondo del elemento con un gradiente
@@ -58,4 +58,15 @@ function findParentNode(element,node_name){
     element = element.parentNode;
   };
   return element
+
+// devuelve el valor css para el atributo grid según el número de columnas
+function getCssColumns(columns){
+  var cssColumns = " ";
+  var i = 0;
+  var percent = 100/columns
+  while(i<columns){
+    cssColumns = cssColumns + percent + '% ';
+    i++;
+  };
+  return cssColumns;
 };

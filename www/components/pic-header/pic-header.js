@@ -27,9 +27,9 @@ Polymer({
   	};
   },
   addCssClass: function(){
-  	$('pic-header header').addClass('style-scope pic-header');
-  	$('pic-header header').addClass(this.position);
-  	$('pic-header header').addClass(this.gradient);
+  	$('pic-header jsv-header').addClass('style-scope pic-header');
+  	$('pic-header jsv-header').addClass(this.position);
+  	$('pic-header jsv-header').addClass(this.gradient);
   },
   addBackFeature: function(feature){
   	var iconBack = '<i class="fa fa-chevron-left fa-2x" aria-hidden="true" style="color: white;" onclick="'+feature+'"></i>';

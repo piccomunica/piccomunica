@@ -12,6 +12,10 @@ Polymer({
     },
     colour: {
       type: String
+    },
+    column_size: {
+      type: Number,
+      observer: 'setFontSize'
     }
   },
   // este código se ejecuta cuando el componente está cargado
@@ -21,7 +25,7 @@ Polymer({
   },
   // ajusta el tamaño de la fuente
   setFontSize: function(){
-    var size = 1.8-(0.25*(app.dataBase.columns-1));
+    var size = 1.8-(0.25*(this.column_size-1));
     $('pic-picto[name="'+this.name+'"] figcaption').css({'font-size': size+'em'});
   },
 });

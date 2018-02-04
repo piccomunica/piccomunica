@@ -9,7 +9,7 @@ var menuController = {
 	    'backfeature': true
 	  },e);
     this.renderCategoryList();
-    this.categoryToggle();
+    this.enableCategoryToggle();
 	},
   // abre el menú
 	open: function(){
@@ -36,11 +36,13 @@ var menuController = {
     menuController.updateNumberOfColumns(pictoSize);
     menuController.close();
   },
-  // setea el nuevo valor de columnas y lanza evento a pic-dictionary controller
+  // setea el nuevo valor de columnas
   updateNumberOfColumns: function(pictoSize){
     var columnsSize = parseInt(pictoSize.value);
     app.dataBase.columns = columnsSize;
-    $(document).trigger('number-columns-modificated');
+    $('pic-category').forEach(function(category){
+      category.setAttribute('columns',app.dataBase.columns);
+    });
   },
   // añade listado de categorías disponibles
   renderCategoryList: function(){
@@ -50,8 +52,8 @@ var menuController = {
     });
   },
   // des/pliega el listado categorías colapsable
-  categoryToggle: function(){
-    $('#categories-edit p').on('click',function(e){
+  enableCategoryToggle: function(){
+    $('#categories-edit p').bind('click',function(e){
       $('#categories-edit ul').toggle();
     });
   }
