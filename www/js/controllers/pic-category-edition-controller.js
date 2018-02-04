@@ -50,7 +50,7 @@ var categoryEditionController = {
   renderPictos: function(){
     var pictos_container = $('#category-edition-pictos-container');
     var category = this.category;
-    var columns = 4.5;
+    var columns = 5.4;
     this.category.pictos.forEach(function(picto){
       // creación del componente picPicto y render
       var _picPicto = picPicto(picto,category.folder,category.colour,columns);
