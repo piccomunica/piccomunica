@@ -45,12 +45,19 @@ var app = {
         controller: 'menu'
       }
     });
-    // setea la vista inicial
+    // setea las vistas
     $JSView.declareView({
       picDictionary: {
         url: '/pic-dictionary',
         template: 'views/pic-dictionary.html',
+        // se setea en js/controllers.js
         controller: 'picDictionary'
+      },
+      picCategoryEdition: {
+        url: '/pic-category-edition',
+        template: 'views/pic-category-edition.html',
+        // se setea en js/controllers.js
+        controller: 'picCategoryEdition'
       }
     });
     $JSView.declareModal({

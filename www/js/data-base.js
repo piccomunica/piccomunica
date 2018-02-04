@@ -37,13 +37,11 @@ var dataBase = {
     this.categories.push(category);
     $('#categories').trigger('new-category');
   },
-  updateCategory: function(original,changed){
-    var original = this.loadCategory(changed.id);
-    var category_selector = 'pic-category[category="'+original.name+'"]';
-    original.name = changed.name;
-    original.colour = changed.colour;
+  updateCategory: function(category){
+    var original = this.loadCategory(category.id);
+    original.name = category.name;
+    original.colour = category.colour;
     // original.pictos = changed.pictos;
-    $(category_selector).trigger('updated-category');
   },
   removeCategory: function(category){
     var category_selector = 'pic-category[category="'+category.name+'"]';

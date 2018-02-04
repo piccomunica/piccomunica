@@ -1,0 +1,25 @@
+<!-- opción editar categoría -->
+<pic-header logo={{title}} position={{position}} gradient={{gradient}}>
+</pic-header>
+<jsv-content>
+  <div id="container-category-edition" category-id={{category_id}}>
+    <section>
+      <p><b>Nombre de la categoría:</b></p>
+      <input type="text" name="category_name" placeholder="añadir nombre" value={{category_name}}>
+    </section>
+    <section>
+      <p><b>Color:</b><br></p>
+      <pic-colour-input colour={{category_colour}}></pic-colour-input>
+    </section>
+    <section>
+      <p><b>Añadir pictograma:</b></p>
+      <div id="category-edition-pictos-container"></div>
+    </section>
+    <section>
+      <div id="category-edition-buttons">
+        <input type="button" value="Cancelar" onclick="categoryEditionController.close();">
+        <input type="button" value="Guardar" onclick="categoryEditionController.save();">
+      </div>
+    </section>
+  </div>
+</jsv-content>

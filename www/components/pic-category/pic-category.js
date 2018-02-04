@@ -34,6 +34,8 @@ Polymer({
     this.renderPictos();
     // activa el comportamiento del colapsable
     this.enableCategoryToggle();
+    // subscripción a eventos
+    $(this).on('updated-category',this.updateCategory);
     console.log('local DOM for pic-category initialized');
   },
   // busqueda de categoría en bbdd y la setea como variable del controller
@@ -86,12 +88,15 @@ Polymer({
   setCollapsibleIcon: function(){
     $('#'+this.name+'-category').append('<i aria-hidden="true" style="color: white;" class="style-scope pic-category fa '+this.collapsibleicon+' fa-1x"></i>');
   },
-  updateCategory: function(category){
+  updateCategory: function(){
+    this.loadCategory();
     // actualiza datos
-    this.setAttribute('title', category.name.capitalize());
-    this.setAttribute('category', category.name);
-    this.setAttribute('colour', category.colour);
+    this.setAttribute('title', this.category.name.capitalize());
+    this.setAttribute('name', this.category.name);
+    this.setAttribute('colour', this.category.colour);
     // actualiza el gradiente
     setGradient(this.colour,this.firstElementChild);
+    // render new pictos
+    this.renderPictos();
   }
 });

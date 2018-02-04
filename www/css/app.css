@@ -118,3 +118,41 @@ body {
     left: -100%; }
   100% {
     left: -0%; } }
+
+#picCategoryEdition {
+  z-index: 10; }
+
+#container-category-edition {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; }
+  #container-category-edition section {
+    font-family: 'Arial Nova', sans-serif;
+    font-size: 1.13em;
+    color: white;
+    margin: 5% 10% 8%; }
+    #container-category-edition section p {
+      line-height: 1.7em; }
+  #container-category-edition input[type=text] {
+    width: 100%;
+    font-size: 1em;
+    background: transparent;
+    border: 0;
+    color: white; }
+  #container-category-edition input[type=text]:focus {
+    outline: 0; }
+  #container-category-edition #category-edition-pictos-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%; }
+  #container-category-edition #category-edition-buttons {
+    text-align: center; }
+    #container-category-edition #category-edition-buttons input[type=button] {
+      padding: 2% 12%;
+      margin: 0% 2%;
+      background: transparent;
+      color: white;
+      font-size: 0.9em;
+      /* font-weight: bold; */
+      border-color: white;
+      border-width: 1.4px; }

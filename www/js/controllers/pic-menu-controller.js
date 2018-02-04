@@ -48,7 +48,7 @@ var menuController = {
   renderCategoryList: function(){
     $('#categories-edit').append('<ul id="category-list" class="control"></ul>')
     app.dataBase.categories.forEach(function(category){
-      $('#category-list').append('<li>'+category.name.capitalize()+'</li>')
+      $('#category-list').append("<li onclick=\"categoryEditionController.open('picCategoryEdition');\" category-id="+category.id+">"+category.name.capitalize()+"</li>")
     });
   },
   // des/pliega el listado categorías colapsable

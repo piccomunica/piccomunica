@@ -35,6 +35,7 @@ function setBackgroundColour(colour,element){
 };
 
 // setea el fondo del elemento con un gradiente
+// de derecha a izquierda
 function setGradient(basic_colour,element){
   var colorLeft = tinycolor(basic_colour).toString();
   var colorRight = tinycolor(colorLeft).spin(20).lighten(10).brighten(5).desaturate(10).toString();
@@ -52,12 +53,31 @@ function setGradient(basic_colour,element){
     .css({background: bgOpera});
 };
 
+// de izquierda a derecha
+function setInverseGradient(basic_colour,element){
+  var colorLeft = tinycolor(basic_colour).toString();
+  var colorRight = tinycolor(colorLeft).spin(40).lighten(20).brighten(-5).desaturate(-10).toString();
+
+  var bgWebkit = '-webkit-linear-gradient(left, '+colorLeft+', '+colorRight+')';
+  var bgOpera = '-o-linear-gradient(left, '+colorLeft+', '+colorRight+')';
+  var bgMoz = '-moz-linear-gradient(left, '+colorLeft+', '+colorRight+')';
+  var bgNormal = 'linear-gradient(left, '+colorLeft+', '+colorRight+')';
+
+  $(element)
+    .css({background: colorLeft})
+    .css({background: bgNormal})
+    .css({background: bgWebkit})
+    .css({background: bgMoz})
+    .css({background: bgOpera});
+};
+
 // escala por el DOM hasta encontrar el nodo padre coincidente con el nombre
 function findParentNode(element,node_name){
   while(element.nodeName != node_name){
     element = element.parentNode;
   };
   return element
+};
 
 // devuelve el valor css para el atributo grid según el número de columnas
 function getCssColumns(columns){
