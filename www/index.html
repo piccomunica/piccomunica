@@ -37,12 +37,15 @@
     <script type="text/javascript" src="js/controllers/pic-menu-controller.js"></script>
     <script type="text/javascript" src="js/controllers/pic-dictionary-controller.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
+    <script src="speak_module/speakClient.js"></script>
   </head>
   <!-- dentro del body se renderiza cada vista -->
   <body>
+    <div id="audio"></div>
     <!-- carga de la aplicación -->
     <script type="text/javascript">
       app.initialize(dataBase);
+      speak('hello world!');
     </script>
   </body>
 </html>
