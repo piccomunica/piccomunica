@@ -8,7 +8,8 @@ var menuController = {
 	    'feature': 'menuController.close();',
 	    'backfeature': true
 	  },e);
-    this.renderCategoryList();
+    // añade el contendor de las categorías
+    $('#categories-edit').append('<ul id="category-list" class="control"></ul>')
     this.enableCategoryToggle();
 	},
   // abre el menú
@@ -44,9 +45,13 @@ var menuController = {
       category.setAttribute('columns',app.dataBase.columns);
     });
   },
+  // resetea listado de categorías
+  resetCategoryList: function(){
+    $('#category-list').empty();
+  },
   // añade listado de categorías disponibles
   renderCategoryList: function(){
-    $('#categories-edit').append('<ul id="category-list" class="control"></ul>')
+    this.resetCategoryList();
     app.dataBase.categories.forEach(function(category){
       $('#category-list').append("<li onclick=\"categoryEditionController.open('picCategoryEdition');\" category-id="+category.id+">"+category.name.capitalize()+"</li>")
     });
@@ -54,7 +59,7 @@ var menuController = {
   // des/pliega el listado categorías colapsable
   enableCategoryToggle: function(){
     $('#categories-edit p').bind('click',function(e){
-      $('#categories-edit ul').toggle();
+      $('#category-list').toggle();
     });
   }
 };
