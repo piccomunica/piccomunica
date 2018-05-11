@@ -34,13 +34,13 @@ var dictionaryController = {
     // añade envento que hace grande el picto
 		$('pic-picto').on("click", extraPictoController.makeMeBig);
 	},
-  // prependNewCategory: function(){
-  // 	var category = app.dataBase.categories.last();
-  // 	dictionaryController.buildCategoryAndPictos(category,'prepend');
-  // 	menuController.close();
-  // },
-  // removeCategory: function(){
-  // 	$(event.target).remove();
-  // 	menuController.close();
-  // }
+  prependNewCategory: function(){
+  	var category = app.dataBase.categories.last();
+  	dictionaryController.buildCategoryAndPictos(category,'prepend');
+  	menuController.close();
+  },
+  removeCategory: function(){
+  	$(event.target).remove();
+  	menuController.close();
+  }
 };

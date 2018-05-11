@@ -2,16 +2,18 @@ var categoryEditionController = {
   init: function(e){
     // attributos a renderizar en la vista
     $JSView.dataView({
-      'title': '"Modificar Categoría"',
+      'title': this.title,
       'position': 'header',
       'gradient': 'green-gradient',
-      'category_id': this.category.id,
-      'category_name': this.category.name.capitalize(),
-      'category_colour': this.category.colour,
-      'category_pictos': this.category.pictos
+      'category_id': this.category ? this.category.id : '""',
+      'category_name': this.category ? this.category.name.capitalize() : '""',
+      'category_colour': this.category ? this.category.colour : '""',
+      'category_pictos': this.category ? this.category.pictos : '""'
     },e);
     this.cssChanges();
-    this.renderPictos();
+    if (this.category) {
+      this.renderPictos();
+    };
   },
   cssChanges: function(){
     // más espacio para el título
@@ -29,7 +31,10 @@ var categoryEditionController = {
     var category_id = $(event.target).attr('category-id');
     // busqueda de categoría en bbdd y la setea como variable del controller
     this.category = app.dataBase.loadCategory(category_id);
+    this.title = this.category ? '"Modificar Categoría"' : '"Categoría nueva"';
     this.init(e);
+    // select category colour default
+    $('#cell-colour-'+default_colours[0])[0].click();
     // animación al abrir
     $('#picCategoryEdition').show();
     $('#picCategoryEdition').css({animation: 'to-right 1s forwards;'});
@@ -64,13 +69,14 @@ var categoryEditionController = {
     });
   },
   save: function(){
+    this.category = this.category ? this.category : new Category();
     var old_name = this.category.name;
     // actualizar atributos que pueden haber cambiado
     this.category.name = $('#container-category-edition input[type=text]')[0].value.toLowerCase();
     this.category.colour = $($('#rainbow-colours span[data-selected=true]')[0]).attr('data-colour');
     // actualiza la categoría en bbdd
     var new_category = new Category(this.category.id,this.category.name,this.category.folder,this.category.colour,this.category.pictos);
-    app.dataBase.updateCategory(new_category);
+    old_name ? app.dataBase.updateCategory(new_category) : app.dataBase.createCategory(new_category);
     // emite evento para updatear la categoría
     var category_selector = 'pic-category[name="'+old_name+'"]';
     $(category_selector).trigger('updated-category');
