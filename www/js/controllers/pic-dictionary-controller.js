@@ -37,6 +37,8 @@ var dictionaryController = {
   prependNewCategory: function(){
   	var category = app.dataBase.categories.last();
   	dictionaryController.buildCategoryAndPictos(category,'prepend');
+    // añade envento que hace grande el picto
+    $('pic-picto').on("click", extraPictoController.makeMeBig);
   	menuController.close();
   },
   removeCategory: function(){
