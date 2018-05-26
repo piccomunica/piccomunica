@@ -27,22 +27,27 @@
     <script type="text/javascript" src="js/libs/jquery.keyframes.min.js"></script>
     <!-- funciones utiles -->
     <script type="text/javascript" src="js/utils.js"></script>
-    <!-- app basics -->
-    <script type="text/javascript" src="js/factories/factory.js"></script>
-    <script type="text/javascript" src="js/data-base.js"></script>
+    <!-- factories -->
+    <script type="text/javascript" src="js/factories/models.js"></script>
+    <script type="text/javascript" src="js/factories/components.js"></script>
+    <!-- database and model-controllers -->
+    <script type="text/javascript" src="js/database/categories.js"></script>
+    <script type="text/javascript" src="js/database/pictos.js"></script>
+    <script type="text/javascript" src="js/database/data-base.js"></script>
+    <!-- app basic -->
     <script type="text/javascript" src="js/app.js"></script>
-    <!-- controllers -->
-    <script type="text/javascript" src="js/controllers/extra-picto-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/pic-category-edition-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/pic-menu-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/pic-dictionary-controller.js"></script>
-    <script type="text/javascript" src="js/controllers.js"></script>
+    <!-- view-controllers -->
+    <script type="text/javascript" src="js/view-controllers/extra-picto-controller.js"></script>
+    <script type="text/javascript" src="js/view-controllers/pic-category-edition-controller.js"></script>
+    <script type="text/javascript" src="js/view-controllers/pic-menu-controller.js"></script>
+    <script type="text/javascript" src="js/view-controllers/pic-dictionary-controller.js"></script>
+    <script type="text/javascript" src="js/view-controllers.js"></script>
   </head>
   <!-- dentro del body se renderiza cada vista -->
   <body>
     <!-- carga de la aplicación -->
     <script type="text/javascript">
-      app.initialize(dataBase);
+      app.initialize(dataBase,raw_info);
     </script>
   </body>
 </html>

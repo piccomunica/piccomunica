@@ -4,21 +4,26 @@ var extraPictoController = {
     // encuentra el picto
     var picto = findParentNode(event.target,'PIC-PICTO')
     // creación del componente big picPicto
-    var _picPicto = picPicto(picto.name,picto.folder,picto.colour);
+    var _picPicto = picPicto(picto,picto.folder,picto.colour);
     $(_picPicto).addClass('style-scope pic-picto big');
     // render big picPicto with exit icon
     var container = $("#container-big-picto");
     extraPictoController.resizeContainer(container);
-    extraPictoController.addExitFeature(container,picto.colour);
     container.append(_picPicto);
-    // añade funcionalidad a big picPicto
+    // deshabilitar cabecera y scroll
+    extraPictoController.disableHeader();
     extraPictoController.disableScrolling(container);
-    $("#exit-icon").on("click",extraPictoController.makeMeSmall);
+    // añade funcionalidad a big picPicto
+    extraPictoController.addExitFeature(container,picto);
+    if(app.editableCategory){
+      extraPictoController.addDeleteFeature(container,picto);
+    };
   },
   //salir vista picto grande
   makeMeSmall: function(){
     var container = $("#container-big-picto");
     extraPictoController.enableScrolling(container);
+    extraPictoController.enableHeader();
     extraPictoController.resetContainer(container);
     // marco.removeClass("marco-pic-grande");
   },
@@ -36,6 +41,11 @@ var extraPictoController = {
   enableScrolling: function(container){
     container.unbind('scroll touchmove mousewheel');
   },
+  enableHeader: function(){
+    $('.pic-header.icon i').forEach(function(icon){
+      $(icon).show();
+    });
+  },
   // previene el scrolling
   disableScrolling: function(container){
     container.bind('scroll touchmove mousewheel', function(e){
@@ -44,8 +54,19 @@ var extraPictoController = {
       return false;
     });
   },
+  // evita navegar por los menús mientras está el picto en grande
+  disableHeader: function(){
+    $('.pic-header.icon i').forEach(function(icon){
+      $(icon).hide();
+    });
+  },
   addExitFeature: function(container,colour){
-    var iconBack = '<i id="exit-icon" class="fa fa-reply fa-3x" aria-hidden="true" style="color: '+colour+';"></i>';
-    container.html(iconBack);
+    var iconBack = closePictoButton(colour);
+    container.append(iconBack);
+  },
+  // borra el picto de la bbdd
+  addDeleteFeature: function(container,colour){
+    var iconDelete = deletePictoButton(colour);
+    container.append(iconDelete);
   }
 };

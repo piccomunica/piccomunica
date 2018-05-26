@@ -11,7 +11,10 @@
         width: 100%; }
       figcaption {
         text-align: center;
-        word-wrap: break-word;
+        /*word-wrap: break-word;*/
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         color: white;}
       .big {
         display: grid;
@@ -20,7 +23,8 @@
         align-self: center;
         margin-bottom: 35%;
         padding: 0.6em;
-        border-radius: 1em; }
+        border-radius: 1em;
+        box-shadow: 5px 5px rgba(136, 136, 136, 0.75); }
       .big figcaption {
         font-size: 2.2em !important; }
       }
