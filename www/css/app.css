@@ -3,6 +3,23 @@ body {
   margin: 0px;
   font-family: 'Arial Nova', sans-serif; }
 
+#container-big-picto {
+  display: none;
+  position: fixed;
+  display: grid;
+  z-index: 11; }
+  #container-big-picto .delete-icon {
+    position: absolute;
+    top: 1%;
+    left: 4%; }
+  #container-big-picto .exit-icon {
+    position: absolute;
+    top: 2%;
+    right: 4%; }
+
+#picDictionary {
+  z-index: unset; }
+
 #categories {
   padding: 0;
   margin: 0; }
@@ -12,14 +29,10 @@ body {
 
 .picto-big {
   width: 100%;
-  background-color: grey;
-  z-index: 1;
-  background: rgba(77, 76, 77, 0.79); }
-
-#exit-icon {
-  position: absolute;
-  top: 2%;
-  right: 4%; }
+  background: rgba(255, 255, 255, 0.7); }
+  .picto-big figcaption {
+    white-space: unset;
+    word-wrap: break-word; }
 
 .green-gradient {
   background-color: #4fb948;
@@ -142,6 +155,9 @@ body {
   #container-category-edition input[type=text]:focus {
     outline: 0; }
   #container-category-edition #category-edition-pictos-container {
+    border-radius: 2%;
+    background-color: rgba(255, 255, 255, 0.65);
+    padding: 1%;
     width: 100%;
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%; }
@@ -149,8 +165,8 @@ body {
     text-align: center; }
     #container-category-edition #category-edition-buttons input[type=button] {
       padding: 2% 12%;
-      margin: 0% 1%;
-      background: transparent;
+      margin: 0% 2%;
+      background-color: rgba(89, 189, 72, 0.78);
       color: white;
       font-size: 0.9em;
       /* font-weight: bold; */

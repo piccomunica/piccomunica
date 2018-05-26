@@ -52,7 +52,7 @@ var menuController = {
   // añade listado de categorías disponibles
   renderCategoryList: function(){
     this.resetCategoryList();
-    app.dataBase.categories.forEach(function(category){
+    app.dataBase.categories.records.forEach(function(category){
       $('#category-list').append("<li onclick=\"categoryEditionController.open('picCategoryEdition');\" category-id="+category.id+">"+category.name.capitalize()+"</li>")
     });
   },

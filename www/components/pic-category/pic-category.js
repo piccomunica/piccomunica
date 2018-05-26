@@ -36,11 +36,12 @@ Polymer({
     this.enableCategoryToggle();
     // subscripción a eventos
     $(this).on('updated-category',this.updateCategory);
+    $(this).on('removed-picto',this.updateCategory);
     console.log('local DOM for pic-category initialized');
   },
   // busqueda de categoría en bbdd y la setea como variable del controller
   loadCategory: function(){
-    this.category = app.dataBase.loadCategory(this.id);
+    this.category = app.dataBase.categories.read(this.id);
   },
   // configura el formato de las columnas a través de css grid
   setNumberOfColumns: function(){
@@ -61,7 +62,7 @@ Polymer({
     $(parent).empty();
     var category = this.category;
     var columns = this.columns;
-    category.pictos.forEach(function(picto){
+    category.pictos().forEach(function(picto){
       // creación del componente picPicto y render
       var _picPicto = picPicto(picto,category.folder,category.colour,columns);
       parent.append(_picPicto);
