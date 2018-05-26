@@ -28,7 +28,10 @@ Polymer({
   },
   // ajusta el tamaño de la fuente
   setFontSize: function(){
-    var size = 1.8-(0.25*(this.column_size-1));
-    $(this).css({'font-size': size+'em'});
+    var column_width = window.innerWidth/this.column_size;
+    var percent_size = column_width/768;
+    var pixels_ref = window.innerWidth/25;
+    var size = pixels_ref+(pixels_ref*percent_size);
+    $(this).css({'font-size': size+'px'});
   },
 });
