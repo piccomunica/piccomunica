@@ -7,12 +7,14 @@ var categoryEditionController = {
       'gradient': 'green-gradient',
       'category_id': this.category ? this.category.id : '""',
       'category_name': this.category ? this.category.name.capitalize() : '""',
-      'category_colour': this.category ? this.category.colour : '""',
-      'category_pictos': this.category ? this.category.pictos : '""'
+      'category_colour': this.category ? this.category.colour : app.dataBase.colours[0]
     },e);
     this.cssChanges();
     if (this.category) {
-      this.renderPictos();
+      // carga de pictos temporal
+      this.category_pictos = this.category.pictos();
+      this.pictos_to_remove = [];
+      this.renderPictos.bind(this)();
     };
   },
   cssChanges: function(){
@@ -27,24 +29,25 @@ var categoryEditionController = {
   },
   // abre la opción
   open: function(e){
+    app.editableCategory = true;
     // render new attributes
     var category_id = $(event.target).attr('category-id');
     // busqueda de categoría en bbdd y la setea como variable del controller
-    this.category = app.dataBase.loadCategory(category_id);
+    this.category = app.dataBase.categories.read(category_id);
     this.title = this.category ? '"Modificar Categoría"' : '"Categoría nueva"';
     this.init(e);
-    // select category colour default
-    $('#cell-colour-'+default_colours[0])[0].click();
     // animación al abrir
     $('#picCategoryEdition').show();
     $('#picCategoryEdition').css({animation: 'to-right 1s forwards;'});
     // setear eventos
-    $(document).on('category-colour-modificated',this.changePictosColour);
+    $('pic-colour-input').on('category-colour-modificated',this.changePictosColour);
+    $('#category-edition-pictos-container').on('removed-picto',this.renderPictos.bind(this));
   },
   // cierra la opción
   close: function(){
-    // cierra el colapsable de la lista de categorías del menú (se quedó abierto)
-    $('#categories-edit ul').toggle();
+    app.editableCategory = false;
+    // cierra el colapsable de la lista de categorías del menú (si se quedó abierto)
+    $('#categories-edit ul').hide();
     // animación al cerrar
     $('#picCategoryEdition').css({animation: 'to-left 1s forwards;'});
     // espera a que termine la animación para ocultar
@@ -54,9 +57,12 @@ var categoryEditionController = {
   },
   renderPictos: function(){
     var pictos_container = $('#category-edition-pictos-container');
+    // limpia el contenedor para evitar duplicar pictos
+    $(pictos_container).empty();
     var category = this.category;
     var columns = 5.4;
-    this.category.pictos.forEach(function(picto){
+    // se renderizan los pictos cargados en el componente
+    this.category_pictos.forEach(function(picto){
       // creación del componente picPicto y render
       var _picPicto = picPicto(picto,category.folder,category.colour,columns);
       pictos_container.append(_picPicto);
@@ -68,6 +74,14 @@ var categoryEditionController = {
       setBackgroundColour(colour,picto);
     });
   },
+  temporalDelete: function(picto){
+    picto = app.dataBase.pictos.read(picto.id);
+    var index = this.category_pictos.indexOf(picto);
+    this.category_pictos.splice(index, 1);
+    this.pictos_to_remove.push(picto);
+    // emite evento para remover picto de modo temporal
+    $('#category-edition-pictos-container').trigger('removed-picto');
+  },
   save: function(){
     this.category = this.category ? this.category : new Category();
     var old_name = this.category.name;
@@ -75,11 +89,12 @@ var categoryEditionController = {
     this.category.name = $('#container-category-edition input[type=text]')[0].value.toLowerCase();
     this.category.colour = $($('#rainbow-colours span[data-selected=true]')[0]).attr('data-colour');
     // actualiza la categoría en bbdd
-    var new_category = new Category(this.category.id,this.category.name,this.category.folder,this.category.colour,this.category.pictos);
-    old_name ? app.dataBase.updateCategory(new_category) : app.dataBase.createCategory(new_category);
-    // emite evento para updatear la categoría
-    var category_selector = 'pic-category[name="'+old_name+'"]';
-    $(category_selector).trigger('updated-category');
+    var new_category = new Category(this.category.id,this.category.name,this.category.folder,this.category.colour);
+    old_name ? app.dataBase.categories.update(new_category) : app.dataBase.categories.create(new_category);
+    // borra los pictos definitivamente
+    this.pictos_to_remove.forEach(function(picto){
+      app.dataBase.pictos.delete(picto);
+    });
     this.close();
     menuController.close();
   }

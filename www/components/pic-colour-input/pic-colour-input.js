@@ -11,7 +11,7 @@ Polymer({
   // este código se ejecuta cuando el componente está cargado
   attached: function(){
     // carga el array de colores
-    this.colours = default_colours;
+    this.colours = app.dataBase.colours;
     this.renderRainbowColours();
     // selecciona el color de la categoría inicial
     this.selectColourCell();
@@ -43,7 +43,7 @@ Polymer({
     // deselecciona anterior color
     $('pic-colour-input')[0].unselectedColourCell();
     // asigna el valor de colour según de donde proceda el evento: del menú o de los colores
-    var colour = event.target.nodeName == 'LI' ? this.colour : $(event.target).attr('data-colour');
+    var colour = ( event.target.nodeName != 'SPAN' ? this.colour : $(event.target).attr('data-colour') );
     // añade el borde interior al color seleccionado
     var colour_hex = '#'+tinycolor(colour).toHex();
     $('#cell-colour-'+colour).attr('data-selected',true);
@@ -51,7 +51,7 @@ Polymer({
     // cambia el valor del color en el input
     $('pic-colour-input input').attr('value',colour_hex);
     // lanza evento
-    $(document).trigger('category-colour-modificated');
+    $(this).trigger('category-colour-modificated');
   },
   // selecciona color activo y borra sus atributos
   unselectedColourCell: function(){

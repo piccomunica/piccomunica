@@ -28,17 +28,13 @@ var dictionaryController = {
 	},
 	renderCategoriesAndPictos: function(){
     // se añaden categorías y pictos
-		app.dataBase.categories.forEach(function(category){
+		app.dataBase.categories.records.forEach(function(category){
 			dictionaryController.buildCategoryAndPictos(category,'append');
 	  });
-    // añade envento que hace grande el picto
-		$('pic-picto').on("click", extraPictoController.makeMeBig);
 	},
   prependNewCategory: function(){
-  	var category = app.dataBase.categories.last();
+  	var category = app.dataBase.categories.records.last();
   	dictionaryController.buildCategoryAndPictos(category,'prepend');
-    // añade envento que hace grande el picto
-    $('pic-picto').on("click", extraPictoController.makeMeBig);
   	menuController.close();
   },
   removeCategory: function(){

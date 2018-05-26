@@ -1,11 +1,10 @@
 // app: objeto básico
 var app = {
-  editableCategory: null,
+  editableCategory: false,
   // Application Constructor
-  initialize: function(data_base) {
+  initialize: function(data_base,raw_info) {
     // setea las opciones by default
-    data_base.init(categories);
-    this.dataBase = data_base;
+    this.dataBase = data_base.init(raw_info);
     this.onLoadImgReady();
     this.bindEvents();
   },
