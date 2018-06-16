@@ -71,6 +71,7 @@ var categoryEditionController = {
   changePictosColour: function(){
     var colour = $('pic-colour-input input')[0].value;
     $('#category-edition-pictos-container pic-picto').forEach(function(picto){
+      picto.setAttribute('colour', colour);
       setBackgroundColour(colour,picto);
     });
   },
