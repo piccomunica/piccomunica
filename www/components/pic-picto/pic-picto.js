@@ -14,7 +14,8 @@ Polymer({
       type: String
     },
     colour: {
-      type: String
+      type: String,
+      observer: 'setBackgroundColour'
     },
     column_size: {
       type: Number,
@@ -34,4 +35,7 @@ Polymer({
     var size = pixels_ref+(pixels_ref*percent_size);
     $(this).css({'font-size': size+'px'});
   },
+  setBackgroundColour(){
+    setBackgroundColour(this.colour,this);
+  }
 });

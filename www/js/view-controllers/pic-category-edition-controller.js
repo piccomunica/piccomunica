@@ -40,7 +40,7 @@ var categoryEditionController = {
     $('#picCategoryEdition').show();
     $('#picCategoryEdition').css({animation: 'to-right 1s forwards;'});
     // setear eventos
-    $('pic-colour-input').on('category-colour-modificated',this.changePictosColour);
+    $('pic-colour-input').on('category-colour-modificated',this.changePictosColour.bind(this));
     $('#category-edition-pictos-container').on('removed-picto',this.renderPictos.bind(this));
   },
   // cierra la opción
@@ -71,9 +71,11 @@ var categoryEditionController = {
   changePictosColour: function(){
     var colour = $('pic-colour-input input')[0].value;
     $('#category-edition-pictos-container pic-picto').forEach(function(picto){
+      // setea el color a ser guardado de modo temporal
+      this.category.colour = colour;
+      // setea el color
       picto.setAttribute('colour', colour);
-      setBackgroundColour(colour,picto);
-    });
+    }.bind(this));
   },
   temporalDelete: function(picto){
     picto = app.dataBase.pictos.read(picto.id);
@@ -88,7 +90,7 @@ var categoryEditionController = {
     var old_name = this.category.name;
     // actualizar atributos que pueden haber cambiado
     this.category.name = $('#container-category-edition input[type=text]')[0].value.toLowerCase();
-    this.category.colour = $($('#rainbow-colours span[data-selected=true]')[0]).attr('data-colour');
+    // this.category.colour = $($('#rainbow-colours span[data-selected=true]')[0]).attr('data-colour');
     // actualiza la categoría en bbdd
     var new_category = new Category(this.category.id,this.category.name,this.category.folder,this.category.colour);
     old_name ? app.dataBase.categories.update(new_category) : app.dataBase.categories.create(new_category);
