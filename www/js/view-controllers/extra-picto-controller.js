@@ -2,7 +2,7 @@
 var extraPictoController = {
   makeMeBig: function(event){
     // encuentra el picto
-    var picto = findParentNode(event.target,'PIC-PICTO')
+    var picto = findParentNode(event.target,'PIC-PICTO');
     // creación del componente big picPicto
     var _picPicto = picPicto(picto,picto.folder,picto.colour);
     $(_picPicto).addClass('style-scope pic-picto big');
@@ -18,13 +18,18 @@ var extraPictoController = {
     if(app.editableCategory){
       extraPictoController.addDeleteFeature(container,picto);
     };
+    // desactiva el evento para hacerlo grande (evita errores)
+    $(_picPicto).off("click", this.makeMeBig);
   },
   //salir vista picto grande
-  makeMeSmall: function(){
+  makeMeSmall: function(event){
+    var _picPicto = event.currentTarget;
     var container = $("#container-big-picto");
     extraPictoController.enableScrolling(container);
     extraPictoController.enableHeader();
     extraPictoController.resetContainer(container);
+    // activa el evento para hacerlo grande otra vez
+    $(_picPicto).on("click", this.makeMeBig);
     // marco.removeClass("marco-pic-grande");
   },
   resizeContainer: function(container){
