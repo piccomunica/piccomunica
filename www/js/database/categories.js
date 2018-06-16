@@ -21,9 +21,7 @@ var Categories = {
     return this.records.find(function(category){ return category.id == id })
   },
   create: function(category){
-    this.records.push(category);
-    // callback para crear un picto por defecto
-    dataBase.pictos.create(new Picto(undefined,'nuevo','nuevo',category.id))
+    this.records.unshift(category);
     $('#categories').trigger('new-category');
   },
   update: function(category){

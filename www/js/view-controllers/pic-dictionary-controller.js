@@ -33,7 +33,7 @@ var dictionaryController = {
 	  });
 	},
   prependNewCategory: function(){
-  	var category = app.dataBase.categories.records.last();
+  	var category = app.dataBase.categories.records[0];
   	dictionaryController.buildCategoryAndPictos(category,'prepend');
   	menuController.close();
   },
