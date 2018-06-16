@@ -35,8 +35,12 @@ var categoryEditionController = {
     this.title = category_id ? '"Modificar Categoría"' : '"Categoría nueva"';
     // busqueda de categoría en bbdd y la setea como variable del controller
     if (category_id) {
-      this.category = app.dataBase.categories.read(category_id)
+      this.new = false;
+      var category = app.dataBase.categories.read(category_id);
+      // categoría clonada para evitar referenciar el objeto original y que los cambios se ejecuten sobre este
+      this.category = new Category(category.id,category.name,category.folder,category.colour);
     } else {
+      this.new = true;
       this.category = new Category(undefined,"",'undefined',app.dataBase.colours[0]);
       // creación de un picto por defecto
       dataBase.pictos.create(new Picto(undefined,'nuevo','nuevo',this.category.id))
@@ -92,13 +96,11 @@ var categoryEditionController = {
     $('#category-edition-pictos-container').trigger('removed-picto');
   },
   save: function(){
-    var old_name = this.category.name;
     // actualizar atributos que pueden haber cambiado
     this.category.name = $('#container-category-edition input[type=text]')[0].value.toLowerCase();
     this.category.colour = $($('#rainbow-colours span[data-selected=true]')[0]).attr('data-colour');
     // actualiza o crea la categoría en bbdd
-    var new_category = new Category(this.category.id,this.category.name,this.category.folder,this.category.colour);
-    old_name ? app.dataBase.categories.update(new_category) : app.dataBase.categories.create(new_category);
+    !this.new ? app.dataBase.categories.update(this.category) : app.dataBase.categories.create(this.category);
     // borra los pictos definitivamente
     this.pictos_to_remove.forEach(function(picto){
       app.dataBase.pictos.delete(picto);
